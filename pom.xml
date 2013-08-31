@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.junior.asamson</groupId>
+  <artifactId>generator</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>generator</name>
+  <dependencies>
+	  <dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-api</artifactId>
+	    <version>2.0-beta7</version>
+	  </dependency>
+	  <dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-core</artifactId>
+	    <version>2.0-beta7</version>
+	  </dependency>
+	  <dependency>
+	  	<groupId>freemarker</groupId>
+	  	<artifactId>freemarker</artifactId>
+	  	<version>2.3.9</version>
+	  </dependency>
+	  <dependency>
+        <groupId>com.sun.xml.bind</groupId>
+        <artifactId>jaxb-impl</artifactId>
+        <version>2.2.7</version>
+      </dependency>
+      <dependency>
+	      <groupId>args4j</groupId>
+	      <artifactId>args4j</artifactId>
+	      <version>2.0.8</version>
+	    </dependency>
+  </dependencies>
+</project>
