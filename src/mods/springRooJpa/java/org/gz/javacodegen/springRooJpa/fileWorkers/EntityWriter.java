@@ -1,6 +1,8 @@
 package org.gz.javacodegen.springRooJpa.fileWorkers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
@@ -8,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.gz.javacodegen.fileWorkers.AbstractWriter;
 import org.gz.javacodegen.springRooJpa.fileWorkers.EntityWriter;
 import org.gz.javacodegen.springRooJpa.wrapper.Entity;
+import org.gz.javacodegen.springRooJpa.wrapper.Field;
 
 public class EntityWriter extends AbstractWriter<Entity> {	
 	static String ENTITY_TEMPLATE = "src/mods/springRooJpa/resources/templates/entity/entityTemplate.tpl";
@@ -16,11 +19,15 @@ public class EntityWriter extends AbstractWriter<Entity> {
 	static String ENTITY_IMPORTS_ACTIVE_RECORDE_TEMPLATE = "entityTemplate.imports.activeRecord.tpl";	
 	static Logger logger = LogManager.getLogger(EntityWriter.class.getName());
 	
-	private static final String[] CUSTOM_CODE_TAGS = {"//CUSTOM-CODE", "//END-CUSTOM-CODE"};
-	private static final String[] CUSTOM_IMPORT_TAGS = {"//CUSTOM-IMPORT", "//END-CUSTOM-IMPORT"};
+	static final String[] CUSTOM_CODE_TAGS = {"//CUSTOM-CODE", "//END-CUSTOM-CODE"};
+	static final String[] CUSTOM_IMPORT_TAGS = {"//CUSTOM-IMPORT", "//END-CUSTOM-IMPORT"};
+	
+	private Map<String, String> javaTypeToImports;
 	
 	public EntityWriter(Entity entity) {
 		super(entity);
+		javaTypeToImports = new HashMap<String, String>();
+		javaTypeToImports.put("Date", "java.util.Date");
 	}
 	
 	@Override
@@ -36,6 +43,12 @@ public class EntityWriter extends AbstractWriter<Entity> {
         data.put("serializable", getWrapper().getSerializable());
         data.put("sequenceName", getWrapper().getSequenceName());
         data.put("classicImports", ENTITY_IMPORTS_TEMPLATE);
+        try {
+			data.put("fieldsImports", getFieldsImports(getWrapper().getFields()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         data.put("activeRecorde", getWrapper().getActiveRecord());
         data.put("activeRecordImports", ENTITY_IMPORTS_ACTIVE_RECORDE_TEMPLATE);
         data.put("table", getWrapper().getTable());
@@ -54,6 +67,23 @@ public class EntityWriter extends AbstractWriter<Entity> {
 		tags.put("customCode", CUSTOM_CODE_TAGS);
 		tags.put("customImport", CUSTOM_IMPORT_TAGS);
 		return tags;
+	}
+	
+	public List<String> getFieldsImports(List<Field> fields) throws Exception{
+		ArrayList<String> imports = new ArrayList<String>();
+		for(Field field : fields){
+			if(field.getType().contains(".")){
+				logger.debug("Found some custom fields adding imports");
+				imports.add(field.getType());
+			} else {
+				if(javaTypeToImports.containsKey(field.getType())){
+					imports.add(javaTypeToImports.get(field.getType()));
+				} else {
+					throw new Exception(field.getType()+" : unknow type please specify the package in the xml file");
+				}
+			}
+		}
+		return imports;
 	}
 	
 }
