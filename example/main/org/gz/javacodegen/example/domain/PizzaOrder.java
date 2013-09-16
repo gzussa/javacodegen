@@ -1,4 +1,4 @@
-package org.junior.asamson.domain;
+package org.gz.javacodegen.example.domain;
 
 import java.io.Serializable;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -13,23 +13,70 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 //CUSTOM-IMPORT
-import test.importe;
+
 //END-CUSTOM-IMPORT
 
-@Entity(name = "Topping")
-public class Topping implements Serializable{
+@Entity(name = "PizzaOrder")
+public class PizzaOrder implements Serializable{
     private static final long serialVersionUID = 1L;
 	
 @NotNull
 @Size(min = 2 )
     private String name;
     
+@Size(min = 30 )
+    private String adresse;
+    
+
+    private Double total;
+    
+@Temporal(TemporalType.TIMESTAMP)
+@DateTimeFormat(style = "M-")
+    private Date deliveryDate;
+    
+	@NotNull
+	
+	@ManyToMany
+	private Set<Pizza> pizzas = new HashSet<Pizza>();
 	public String getName(){
 		return this.name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getAdresse(){
+		return this.adresse;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+	
+	public Double getTotal(){
+		return this.total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+	
+	public Date getDeliveryDate(){
+		return this.deliveryDate;
+	}
+
+	public void setDeliveryDate(Date deliveryDate) {
+		this.deliveryDate = deliveryDate;
+	}
+	
+	
+	public Set<Pizza> getPizzas(){
+		return this.pizzas;
+	}
+
+	public void setPizzas(Set<Pizza> pizzas) {
+		this.pizzas = pizzas;
 	}
 	
 	public String toString() {
@@ -62,24 +109,22 @@ public class Topping implements Serializable{
     }
 
 	public boolean equals(Object obj) {
-		if (!(obj instanceof Topping)) {
+		if (!(obj instanceof PizzaOrder)) {
 			return false;
 		}
 		if (this == obj) {
 			return true;
 		}
-		Topping rhs = (Topping) obj;
-		return new EqualsBuilder().append(id, rhs.id).append(name, rhs.name).isEquals();
+		PizzaOrder rhs = (PizzaOrder) obj;
+		return new EqualsBuilder().append(id, rhs.id).append(name, rhs.name).append(adresse, rhs.adresse).append(total, rhs.total).append(deliveryDate, rhs.deliveryDate).isEquals();
 	}
 	
 	public int hashCode() {
-		return new HashCodeBuilder().append(id).append(name).toHashCode();
+		return new HashCodeBuilder().append(id).append(name).append(adresse).append(total).append(deliveryDate).toHashCode();
 	}
 	
 	
 	//CUSTOM-CODE
-	public int hashCodeTest() {
-		return new HashCodeBuilder().append(id).append(name).toHashCode();
-	}
+	
 	//END-CUSTOM-CODE
 }

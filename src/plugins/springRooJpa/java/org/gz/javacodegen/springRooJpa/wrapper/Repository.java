@@ -2,11 +2,11 @@ package org.gz.javacodegen.springRooJpa.wrapper;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.gz.javacodegen.springRooJpa.wrapper.SpringItems;
+import org.gz.javacodegen.springRooJpa.wrapper.AbstractSourceFile;
 
 
 @XmlRootElement(name="repository")
-public class Repository extends SpringItems{
+public class Repository extends AbstractSourceFile{
 
 	public Repository(){
 		super();

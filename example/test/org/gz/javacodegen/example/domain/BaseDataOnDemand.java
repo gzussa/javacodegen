@@ -1,4 +1,4 @@
-package org.junior.asamson.domain;
+package org.gz.javacodegen.example.domain;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -10,33 +10,30 @@ import javax.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.junior.asamson.service.Pizza2Service;
-import org.junior.asamson.repository.PizzaRepository;
+import org.gz.javacodegen.example.service.BaseService;
+import org.gz.javacodegen.example.repository.BaseRepository;
 
 @Component
 @Configurable
-public class PizzaOrderDataOnDemand; {
+public class BaseDataOnDemand; {
 
     private Random rnd = new SecureRandom();
 
-    private List<PizzaOrder> data;
+    private List<Base> data;
 
     @Autowired
-    Pizza2Service pizza2Service;
+    BaseService baseService;
 
     @Autowired
-    PizzaRepository pizzaRepository;
+    BaseRepository baseRepository;
 
-    public PizzaOrder getNewTransientPizzaOrder(int index) {
-        PizzaOrder obj = new PizzaOrder();
+    public Base getNewTransientBase(int index) {
+        Base obj = new Base();
         setName(obj, index);
-        setAdresse(obj, index);
-        setTotal(obj, index);
-        setDeliveryDate(obj, index);
         return obj;
     }
 
-    public PizzaOrder getSpecificPizzaOrder(int index) {
+    public Base getSpecificBase(int index) {
         init();
         if (index < 0) {
             index = 0;
@@ -44,38 +41,38 @@ public class PizzaOrderDataOnDemand; {
         if (index > (data.size() - 1)) {
             index = data.size() - 1;
         }
-        PizzaOrder obj = data.get(index);
+        Base obj = data.get(index);
         Long id = obj.getId();
-        return pizza2Service.findPizzaOrder(id);
+        return baseService.findBase(id);
     }
 
-    public PizzaOrder getRandomPizzaOrder() {
+    public Base getRandomBase() {
         init();
-        PizzaOrder obj = data.get(rnd.nextInt(data.size()));
+        Base obj = data.get(rnd.nextInt(data.size()));
         Long id = obj.getId();
-        return pizza2Service.findPizzaOrder(id);
+        return baseService.findBase(id);
     }
 
-    public boolean modifyPizzaOrder(PizzaOrder obj) {
+    public boolean modifyBase(Base obj) {
         return false;
     }
 
     public void init() {
         int from = 0;
         int to = 10;
-        data = pizza2Service.findPizzaOrderEntries(from, to);
+        data = baseService.findBaseEntries(from, to);
         if (data == null) {
-            throw new IllegalStateException("Find entries implementation for 'PizzaOrder' illegally returned null");
+            throw new IllegalStateException("Find entries implementation for 'Base' illegally returned null");
         }
         if (!data.isEmpty()) {
             return;
         }
         
-        data = new ArrayList<PizzaOrder>();
+        data = new ArrayList<Base>();
         for (int i = 0; i < 10; i++) {
-            PizzaOrder obj = getNewTransientPizzaOrder(i);
+            Base obj = getNewTransientBase(i);
             try {
-		        pizza2Service.savePizzaOrder(obj);
+		        baseService.saveBase(obj);
             } catch (ConstraintViolationException e) {
                 StringBuilder msg = new StringBuilder();
                 for (Iterator<ConstraintViolation<?>> iter = e.getConstraintViolations().iterator(); iter.hasNext();) {
@@ -84,7 +81,7 @@ public class PizzaOrderDataOnDemand; {
                 }
                 throw new RuntimeException(msg.toString(), e);
             }
-	            pizzaRepository.flush();
+	            baseRepository.flush();
             data.add(obj);
         }
     }

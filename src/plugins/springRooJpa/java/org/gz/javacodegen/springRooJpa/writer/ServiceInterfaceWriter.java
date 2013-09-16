@@ -1,4 +1,4 @@
-package org.gz.javacodegen.springRooJpa.fileWorkers;
+package org.gz.javacodegen.springRooJpa.writer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +11,7 @@ public class ServiceInterfaceWriter extends AbstractWriter<Service>{
 private Entity entity; 
 	
 	public static final String SERVICE_TEMPLATE_INTERFACE_IMPORTS = "serviceTemplate.interface.imports.tpl";
-	public static final String SERVICE_TEMPLATE_INTERFACE = "src/mods/springRooJpa/resources/templates/service/serviceTemplate.interface.tpl";
+	public static final String SERVICE_TEMPLATE_INTERFACE = "src/plugins/springRooJpa/resources/templates/service/serviceTemplate.interface.tpl";
 	
 	private static final String[] CUSTOM_CODE_TAGS = {"//CUSTOM-CODE", "//END-CUSTOM-CODE"};
 	private static final String[] CUSTOM_IMPORT_TAGS = {"//CUSTOM-IMPORT", "//END-CUSTOM-IMPORT"};

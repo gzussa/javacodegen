@@ -6,21 +6,21 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.gz.javacodegen.fileWorkers.treeFolder.MainTreeFolderMaker;
 import org.gz.javacodegen.fileWorkers.treeFolder.TreeFolderNode;
-import org.gz.javacodegen.springRooJpa.wrapper.SpringItems;
+import org.gz.javacodegen.springRooJpa.wrapper.AbstractSourceFile;
 import org.gz.javacodegen.wrapper.Wrapper;
 
-public class SpringItems extends Wrapper {
+public abstract class AbstractSourceFile extends Wrapper {
 	protected String fileName;
 	protected String varName;
 	protected String packageName;
 	protected TreeFolderNode location;
-	static Logger logger = LogManager.getLogger(SpringItems.class.getName());
+	static Logger logger = LogManager.getLogger(AbstractSourceFile.class.getName());
 	
-	public SpringItems(){
+	public AbstractSourceFile(){
 		super();
 	}
 	
-	public SpringItems(String fileName, String packageName){
+	public AbstractSourceFile(String fileName, String packageName){
 		this.fileName = fileName;
 		this.packageName = packageName;
 		this.location = null;

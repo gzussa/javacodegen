@@ -1,4 +1,4 @@
-package org.junior.asamson.domain;
+package org.gz.javacodegen.example.domain;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import javax.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.junior.asamson.service.ToppingService;
-import org.junior.asamson.repository.ToppingRepository;
+import org.gz.javacodegen.example.service.ToppingService;
+import org.gz.javacodegen.example.repository.ToppingRepository;
 
 @Component
 @Configurable

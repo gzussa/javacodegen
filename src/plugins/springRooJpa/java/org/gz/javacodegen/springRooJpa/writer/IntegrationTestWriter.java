@@ -1,5 +1,5 @@
-package org.gz.javacodegen.springRooJpa.fileWorkers;
+package org.gz.javacodegen.springRooJpa.writer;
 
-public class IntegrationTest {
+public class IntegrationTestWriter {
 
 }

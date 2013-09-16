@@ -10,11 +10,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.gz.javacodegen.springRooJpa.wrapper.Field;
 import org.gz.javacodegen.springRooJpa.wrapper.Repository;
 import org.gz.javacodegen.springRooJpa.wrapper.Service;
-import org.gz.javacodegen.springRooJpa.wrapper.SpringItems;
+import org.gz.javacodegen.springRooJpa.wrapper.AbstractSourceFile;
 
 
 @XmlRootElement(name="entity")
-public class Entity extends SpringItems{
+public class Entity extends AbstractSourceFile{
 	
 	private String name;
 	private String persistenceType;

@@ -1,8 +1,8 @@
-package org.junior.asamson.service;
+package org.gz.javacodegen.example.service;
 
 import java.util.List;
-import org.junior.asamson.domain.Topping;
-import org.junior.asamson.repository.ToppingRepository;
+import org.gz.javacodegen.example.domain.Topping;
+import org.gz.javacodegen.example.repository.ToppingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

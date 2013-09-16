@@ -1,4 +1,4 @@
-package org.gz.javacodegen.springRooJpa.fileWorkers;
+package org.gz.javacodegen.springRooJpa.writer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,12 +8,12 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.gz.javacodegen.fileWorkers.AbstractWriter;
-import org.gz.javacodegen.springRooJpa.fileWorkers.EntityWriter;
 import org.gz.javacodegen.springRooJpa.wrapper.Entity;
 import org.gz.javacodegen.springRooJpa.wrapper.Field;
+import org.gz.javacodegen.springRooJpa.writer.EntityWriter;
 
 public class EntityWriter extends AbstractWriter<Entity> {	
-	static String ENTITY_TEMPLATE = "src/mods/springRooJpa/resources/templates/entity/entityTemplate.tpl";
+	static String ENTITY_TEMPLATE = "src/plugins/springRooJpa/resources/templates/entity/entityTemplate.tpl";
 	static String ENTITY_ACTIVE_RECORD_TEMPLATE = "entityTemplate.activeRecord.tpl";
 	static String ENTITY_IMPORTS_TEMPLATE = "entityTemplate.imports.tpl";	
 	static String ENTITY_IMPORTS_ACTIVE_RECORDE_TEMPLATE = "entityTemplate.imports.activeRecord.tpl";	

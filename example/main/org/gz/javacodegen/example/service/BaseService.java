@@ -1,8 +1,8 @@
-package org.junior.asamson.service;
+package org.gz.javacodegen.example.service;
 
 import java.util.List;
-import org.junior.asamson.domain.Base;
-import org.junior.asamson.repository.BaseRepository;
+import org.gz.javacodegen.example.domain.Base;
+import org.gz.javacodegen.example.repository.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

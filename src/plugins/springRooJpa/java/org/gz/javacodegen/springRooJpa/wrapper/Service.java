@@ -2,11 +2,11 @@ package org.gz.javacodegen.springRooJpa.wrapper;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.gz.javacodegen.springRooJpa.wrapper.SpringItems;
+import org.gz.javacodegen.springRooJpa.wrapper.AbstractSourceFile;
 
 
 @XmlRootElement(name="service")
-public class Service extends SpringItems{
+public class Service extends AbstractSourceFile{
 
 	public Service(){
 		super();

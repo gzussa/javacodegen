@@ -1,4 +1,4 @@
-package org.junior.asamson.domain;
+package org.gz.javacodegen.example.domain;
 
 import java.io.Serializable;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -13,60 +13,23 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 //CUSTOM-IMPORT
-
+import test.importe;
 //END-CUSTOM-IMPORT
 
-@Entity(name = "Pizza")
-public class Pizza implements Serializable{
+@Entity(name = "Topping")
+public class Topping implements Serializable{
     private static final long serialVersionUID = 1L;
 	
 @NotNull
 @Size(min = 2 )
     private String name;
     
-
-    private double price;
-    
-	
-	
-	@ManyToMany
-	private Set<Topping> toppings = new HashSet<Topping>();
-	
-	
-	@ManyToOne
-	private Base base
 	public String getName(){
 		return this.name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-	public double getPrice(){
-		return this.price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-	
-	
-	public Set<Topping> getToppings(){
-		return this.toppings;
-	}
-
-	public void setToppings(Set<Topping> toppings) {
-		this.toppings = toppings;
-	}
-	
-	
-	public Base getBase(){
-		return this.base;
-	}
-
-	public void setBase(Base base) {
-		this.base = base;
 	}
 	
 	public String toString() {
@@ -99,22 +62,24 @@ public class Pizza implements Serializable{
     }
 
 	public boolean equals(Object obj) {
-		if (!(obj instanceof Pizza)) {
+		if (!(obj instanceof Topping)) {
 			return false;
 		}
 		if (this == obj) {
 			return true;
 		}
-		Pizza rhs = (Pizza) obj;
-		return new EqualsBuilder().append(id, rhs.id).append(name, rhs.name).append(price, rhs.price).isEquals();
+		Topping rhs = (Topping) obj;
+		return new EqualsBuilder().append(id, rhs.id).append(name, rhs.name).isEquals();
 	}
 	
 	public int hashCode() {
-		return new HashCodeBuilder().append(id).append(name).append(price).toHashCode();
+		return new HashCodeBuilder().append(id).append(name).toHashCode();
 	}
 	
 	
 	//CUSTOM-CODE
-	
+	public int hashCodeTest() {
+		return new HashCodeBuilder().append(id).append(name).toHashCode();
+	}
 	//END-CUSTOM-CODE
 }

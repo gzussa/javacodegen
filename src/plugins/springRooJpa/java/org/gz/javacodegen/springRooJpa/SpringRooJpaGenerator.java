@@ -13,13 +13,13 @@ import org.gz.javacodegen.AbstractGenerator;
 import org.gz.javacodegen.fileWorkers.treeFolder.MainTreeFolderMaker;
 import org.gz.javacodegen.fileWorkers.treeFolder.TestTreeFolderMaker;
 import org.gz.javacodegen.springRooJpa.SpringRooJpaGenerator;
-import org.gz.javacodegen.springRooJpa.fileWorkers.DodTestWriter;
-import org.gz.javacodegen.springRooJpa.fileWorkers.EntityWriter;
-import org.gz.javacodegen.springRooJpa.fileWorkers.RepositoryWriter;
-import org.gz.javacodegen.springRooJpa.fileWorkers.ServiceImplWriter;
-import org.gz.javacodegen.springRooJpa.fileWorkers.ServiceInterfaceWriter;
 import org.gz.javacodegen.springRooJpa.wrapper.DodTest;
 import org.gz.javacodegen.springRooJpa.wrapper.Entity;
+import org.gz.javacodegen.springRooJpa.writer.DodTestWriter;
+import org.gz.javacodegen.springRooJpa.writer.EntityWriter;
+import org.gz.javacodegen.springRooJpa.writer.RepositoryWriter;
+import org.gz.javacodegen.springRooJpa.writer.ServiceImplWriter;
+import org.gz.javacodegen.springRooJpa.writer.ServiceInterfaceWriter;
 
 public class SpringRooJpaGenerator extends AbstractGenerator {
 	

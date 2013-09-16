@@ -1,4 +1,4 @@
-package org.gz.javacodegen.springRooJpa.fileWorkers;
+package org.gz.javacodegen.springRooJpa.writer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +9,7 @@ import org.gz.javacodegen.springRooJpa.wrapper.Entity;
 
 public class DodTestWriter extends AbstractWriter<DodTest> {
 	
-	static String DODTEST_TEMPLATE = "src/mods/springRooJpa/resources/templates/test/entityTestTemplates.dataOnDemand.tpl";
+	static String DODTEST_TEMPLATE = "src/plugins/springRooJpa/resources/templates/test/entityTestTemplates.dataOnDemand.tpl";
 	private Entity entity;
 	
 	private static final String[] CUSTOM_CODE_TAGS = {"//CUSTOM-CODE", "//END-CUSTOM-CODE"};

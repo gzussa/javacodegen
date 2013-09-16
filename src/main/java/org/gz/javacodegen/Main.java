@@ -14,7 +14,7 @@ public class Main {
 
 	static Logger logger = LogManager.getLogger(Main.class.getName());
 	
-	private List<File> mods;
+	private List<File> plugins;
 	private List<String> autorizedType;
 	private String projectRootTest;
 	private String projectRootMain;
@@ -23,7 +23,7 @@ public class Main {
 	private Params params ;
 	
 	public Main(){
-		mods = null;
+		plugins = null;
 		autorizedType = null;
 		projectRootTest = null;
 		projectRootMain = null;
@@ -42,21 +42,21 @@ public class Main {
 	private void init(String[] args){
 		CmdLineParser parser = new CmdLineParser(params);
 		
-		// Init mods : list all mods available
-		File modsFolder = new File("./src/mods");
-		logger.debug("mods folder : "+modsFolder.toString());
-		File[] listOfMods = modsFolder.listFiles(); 
-		mods  = new ArrayList<File>();
-		logger.debug(listOfMods.length+" mods found : ");
+		// Init plugins : list all plugins available
+		File pluginsFolder = new File("./src/plugins");
+		logger.debug("plugins folder : "+pluginsFolder.toString());
+		File[] listOfPlugins = pluginsFolder.listFiles(); 
+		plugins  = new ArrayList<File>();
+		logger.debug(listOfPlugins.length+" plugins found : ");
 		
 		autorizedType = new ArrayList<String>();
-		for (int i = 0; i < listOfMods.length; i++) 
+		for (int i = 0; i < listOfPlugins.length; i++) 
 		{
-			if (listOfMods[i].isDirectory()) 
+			if (listOfPlugins[i].isDirectory()) 
 			{
-				mods.add(listOfMods[i]);
-				logger.debug("\t"+listOfMods[i].getName());
-				autorizedType.add(listOfMods[i].getName());
+				plugins.add(listOfPlugins[i]);
+				logger.debug("\t"+listOfPlugins[i].getName());
+				autorizedType.add(listOfPlugins[i].getName());
 			}
 		}
 		

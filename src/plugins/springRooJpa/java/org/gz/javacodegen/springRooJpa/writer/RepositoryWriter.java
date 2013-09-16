@@ -1,4 +1,4 @@
-package org.gz.javacodegen.springRooJpa.fileWorkers;
+package org.gz.javacodegen.springRooJpa.writer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +11,7 @@ public class RepositoryWriter extends AbstractWriter<Repository>{
 	private Entity entity; 
 	
 	public static final String REPOSITORY_TEMPLATE_IMPORTS = "repositoryTemplate.interface.imports.tpl";
-	public static final String REPOSITORY_TEMPLATE = "src/mods/springRooJpa/resources/templates/repository/repositoryTemplate.interface.tpl";
+	public static final String REPOSITORY_TEMPLATE = "src/plugins/springRooJpa/resources/templates/repository/repositoryTemplate.interface.tpl";
 	
 	private static final String[] CUSTOM_CODE_TAGS = {"//CUSTOM-CODE", "//END-CUSTOM-CODE"};
 	private static final String[] CUSTOM_IMPORT_TAGS = {"//CUSTOM-IMPORT", "//END-CUSTOM-IMPORT"};

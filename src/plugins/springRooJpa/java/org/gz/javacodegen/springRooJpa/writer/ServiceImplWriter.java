@@ -1,4 +1,4 @@
-package org.gz.javacodegen.springRooJpa.fileWorkers;
+package org.gz.javacodegen.springRooJpa.writer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,9 +10,9 @@ import org.gz.javacodegen.springRooJpa.wrapper.Service;
 public class ServiceImplWriter extends AbstractWriter<Service> {
 	private Entity entity; 
 	
-	public static final String SERVICE_TEMPLATE_IMPL = "src/mods/springRooJpa/resources/templates/service/serviceTemplate.implementation.tpl";
+	public static final String SERVICE_TEMPLATE_IMPL = "src/plugins/springRooJpa/resources/templates/service/serviceTemplate.implementation.tpl";
 	public static final String SERVICE_TEMPLATE_IMPL_IMPORTS = "serviceTemplate.implementation.imports.tpl";
-	public static final String SERVICE_TEMPLATE_REPOSITORY_IMPL = "src/mods/springRooJpa/resources/templates/service/serviceTemplate.implementation.repository.tpl";
+	public static final String SERVICE_TEMPLATE_REPOSITORY_IMPL = "src/plugins/springRooJpa/resources/templates/service/serviceTemplate.implementation.repository.tpl";
 	public static final String SERVICE_TEMPLATE_REPOSITORY_IMPL_IMPORTS = "serviceTemplate.implementation.repository.imports.tpl";
 	
 	private static final String[] CUSTOM_CODE_TAGS = {"//CUSTOM-CODE", "//END-CUSTOM-CODE"};
