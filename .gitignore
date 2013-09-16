@@ -1,6 +1,8 @@
 /bin
 /target
 *.class
+.settings/*
+.project
 
 # Package Files #
 *.jar
