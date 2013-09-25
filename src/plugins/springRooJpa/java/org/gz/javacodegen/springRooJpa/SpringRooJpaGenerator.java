@@ -12,11 +12,12 @@ import org.apache.logging.log4j.Logger;
 import org.gz.javacodegen.AbstractGenerator;
 import org.gz.javacodegen.fileWorkers.treeFolder.MainTreeFolderMaker;
 import org.gz.javacodegen.fileWorkers.treeFolder.TestTreeFolderMaker;
-import org.gz.javacodegen.springRooJpa.SpringRooJpaGenerator;
 import org.gz.javacodegen.springRooJpa.wrapper.DodTest;
 import org.gz.javacodegen.springRooJpa.wrapper.Entity;
+import org.gz.javacodegen.springRooJpa.wrapper.IntegrationTest;
 import org.gz.javacodegen.springRooJpa.writer.DodTestWriter;
 import org.gz.javacodegen.springRooJpa.writer.EntityWriter;
+import org.gz.javacodegen.springRooJpa.writer.IntegrationTestWriter;
 import org.gz.javacodegen.springRooJpa.writer.RepositoryWriter;
 import org.gz.javacodegen.springRooJpa.writer.ServiceImplWriter;
 import org.gz.javacodegen.springRooJpa.writer.ServiceInterfaceWriter;
@@ -63,6 +64,10 @@ public class SpringRooJpaGenerator extends AbstractGenerator {
 			
 			DodTestWriter dodw = new DodTestWriter(dodWrapper, entity);
 			dodw.writeOnDisk("");
+			
+			IntegrationTest intWrapper = new IntegrationTest(entity.getFileName()+"IntegrationTest", entity.getPackageName());
+			IntegrationTestWriter intw = new IntegrationTestWriter(intWrapper, entity);
+			intw.writeOnDisk("");
 		  } catch (JAXBException e) {
 			e.printStackTrace();
 		  }
