@@ -1,4 +1,4 @@
-package {{integrationTest.packageName}};
+package ${packageName};
 
 import java.util.List;
 import org.junit.Assert;
@@ -9,76 +9,56 @@ import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-{{if service.name != null : print 'import {{service.packageName}}.{{service.name}};'}}
-{{if repository.name != null : print 'import {{repository.packageName}}.{{repository.name}};'}}
+<#if entity.service??>
+import ${entity.service.packageName}.${entity.service.name};
+</#if>
+<#if entity.repository??>
+import ${entity.repository.packageName}.${entity.repository.name};
+</#if>
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:/META-INF/spring/applicationContext*.xml")
 @Transactional
 @Configurable
-public class {{integrationTest.name}} {
+public class ${entity.fileName}IntegrationTest {
 
     @Test
     public void testMarkerMethod() {
     }
 
 	@Autowired
-    {{dodTest.name}} {{dodTest.varName}};
+    ${entity.fileName}DataOnDemand ${entity.varName}DataOnDemand;
 
-    {{if service.name != null : print '@Autowired
-    {{service.name}} {{service.varName}};'}}
+	<#if entity.service??>
+	@Autowired
+	${entity.service.name} ${entity.service.varName};
+	</#if>
 
-    {{if repository.name != null : print '@Autowired
-    {{repository.name}} {{repository.varName}};'}}
-
-	@Test
-    {{
-    	if repository.name != null AND service.name == null : include entityTestTemplates.integrationTest.repositoryCount.tpl
-        else if service.name != null : include entityTestTemplates.integrationTest.serviceCount.tpl
-        else : include entityTestTemplates.integrationTest.count.tpl
-	}}
+    <#if entity.repository??>
+    @Autowired
+    ${entity.repository.name} ${entity.repository.varName};
+    </#if>
 
 	@Test
-    {{
-    	if repository.name != null AND service.name == null : include entityTestTemplates.integrationTest.repositoryFind.tpl
-        else if service.name != null : include entityTestTemplates.integrationTest.serviceFind.tpl
-        else : include entityTestTemplates.integrationTest.find.tpl
-	}}
+    <#include count>
 
 	@Test
-    {{
-    	if repository.name != null AND service.name == null : include entityTestTemplates.integrationTest.repositoryFindAll.tpl
-        else if service.name != null : include entityTestTemplates.integrationTest.serviceFindAll.tpl
-        else : include entityTestTemplates.integrationTest.findAll.tpl
-	}}
+    <#include find>
 
 	@Test
-    {{
-    	if repository.name != null AND service.name == null : include entityTestTemplates.integrationTest.repositoryFindEntityEntries.tpl
-        else if service.name != null : include entityTestTemplates.integrationTest.serviceFindEntityEntries.tpl
-        else : include entityTestTemplates.integrationTest.findEntityEntries.tpl
-	}}
+    <#include findAll>
 
 	@Test
-    {{
-    	if repository.name != null AND service.name == null : include entityTestTemplates.integrationTest.repositoryFlush.tpl
-        else if service.name != null : include entityTestTemplates.integrationTest.serviceFlush.tpl
-        else : include entityTestTemplates.integrationTest.Flush.tpl
-	}}
+    <#include findEntityEntries>
 
 	@Test
-    {{
-    	if repository.name != null AND service.name == null : include entityTestTemplates.integrationTest.repositoryMergeUpdate.tpl
-        else if service.name != null : include entityTestTemplates.integrationTest.serviceMergeUpdate.tpl
-        else : include entityTestTemplates.integrationTest.mergeUpdate.tpl
-	}}
+    <#include flush>
 
 	@Test
-    {{
-    	if repository.name != null AND service.name == null : include entityTestTemplates.integrationTest.repositoryPersist.tpl
-        else if service.name != null : include entityTestTemplates.integrationTest.servicePersist.tpl
-        else : include entityTestTemplates.integrationTest.persist.tpl
-	}}
+    <#include mergeUpdate>
+
+	@Test
+    <#include persist>
 
 	@Test
    	{{
