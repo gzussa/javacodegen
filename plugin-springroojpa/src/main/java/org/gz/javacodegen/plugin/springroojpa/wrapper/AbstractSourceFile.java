@@ -31,7 +31,8 @@ import org.gz.javacodegen.core.fileworker.treefolder.TreeFolderNode;
 import org.gz.javacodegen.plugin.springroojpa.wrapper.AbstractSourceFile;
 import org.gz.javacodegen.core.wrapper.Wrapper;
 
-public abstract class AbstractSourceFile extends Wrapper {
+public abstract class AbstractSourceFile implements Wrapper {
+	
 	protected String fileName;
 	protected String varName;
 	protected String packageName;
@@ -67,7 +68,6 @@ public abstract class AbstractSourceFile extends Wrapper {
 	
 	public String getVarName(){ return this.varName; }
 
-	@Override
 	public String getFilePath() {
 		return location.getIncrementalPath();
 	}

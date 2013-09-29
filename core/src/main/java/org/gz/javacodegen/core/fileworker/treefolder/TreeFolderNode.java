@@ -28,6 +28,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TreeFolderNode {
+	
 	private List<TreeFolderNode> childs;
     private List<TreeFolderNode> leafs;
     private String value;
@@ -46,6 +47,7 @@ public class TreeFolderNode {
     
     public TreeFolderNode addElement(String currentPath, String[] path){
     	TreeFolderNode currentChild = new TreeFolderNode(path[0], incrementalPath+File.separator+path[0]);
+    	
     	if(path.length == 1){
     		leafs.add(currentChild);
     		return currentChild;

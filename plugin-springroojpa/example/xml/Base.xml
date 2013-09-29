@@ -4,11 +4,11 @@
 		xmlns:field="http://www.myproject.com/xml/field" 
 		name="Base" 
 		packageName="org.junior.asamson.domain" 
-		entity:persistenceType="jpa"
-		entity:activeRecorde="false">
+		persistenceType="jpa"
+		activeRecorde="false">
 				
 	<fields>
-		<field field:name="name" field:type="String" field:notNull="true" field:sizeMin="2"></field>
+		<field name="name" type="String" notNull="true" sizeMin="2"></field>
 	</fields>
 		
 	<relationships></relationships>

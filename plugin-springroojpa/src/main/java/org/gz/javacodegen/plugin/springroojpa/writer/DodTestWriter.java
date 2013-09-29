@@ -31,7 +31,7 @@ import org.gz.javacodegen.plugin.springroojpa.wrapper.Entity;
 
 public class DodTestWriter extends AbstractWriter<DodTest> {
 	
-	static String DODTEST_TEMPLATE = "src/plugins/springRooJpa/resources/templates/test/entityTestTemplates.dataOnDemand.tpl";
+	static String DODTEST_TEMPLATE = "templates/test/entityTestTemplates.dataOnDemand.tpl";
 	private Entity entity;
 	
 	private static final String[] CUSTOM_CODE_TAGS = {"//CUSTOM-CODE", "//END-CUSTOM-CODE"};

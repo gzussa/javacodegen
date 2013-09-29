@@ -22,8 +22,8 @@
  */
 package org.gz.javacodegen.core.wrapper;
 
-public abstract class Wrapper {
+public interface Wrapper {
 
-	public abstract String getFilePath();
+	public String getFilePath();
 	
 }

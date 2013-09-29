@@ -25,6 +25,7 @@ package org.gz.javacodegen.core.fileworker.treefolder;
 import java.io.File;
 
 public class MainTreeFolderMaker {
+	
 	private TreeFolderNode treeFolder;
 	private static MainTreeFolderMaker instance = new MainTreeFolderMaker();
 

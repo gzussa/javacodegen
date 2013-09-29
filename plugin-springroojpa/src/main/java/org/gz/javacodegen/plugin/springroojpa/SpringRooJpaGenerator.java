@@ -47,10 +47,10 @@ public class SpringRooJpaGenerator extends AbstractGenerator {
 	
 	static Logger logger = LogManager.getLogger(SpringRooJpaGenerator.class.getName());
 	
-	public SpringRooJpaGenerator(String srcRootPath, String testRootPath, String xmlConfigFile){
-		super(srcRootPath, testRootPath, xmlConfigFile);
-		TestTreeFolderMaker.getInstance().init(testRootPath);
-		MainTreeFolderMaker.getInstance().init(srcRootPath);
+	public SpringRooJpaGenerator(String srcRootPath, String xmlConfigFile){
+		super(srcRootPath, xmlConfigFile);
+//		TestTreeFolderMaker.getInstance().init(testRootPath);
+//		MainTreeFolderMaker.getInstance().init(srcRootPath);
 	}
 
 	@Override

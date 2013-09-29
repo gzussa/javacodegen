@@ -43,7 +43,9 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 public abstract class AbstractWriter<E extends Wrapper> {
+	
 	static Logger logger = LogManager.getLogger(AbstractWriter.class.getName());
+	
 	private E wrapper;
 	
 	public AbstractWriter(E wrapper){

@@ -20,39 +20,39 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
-package org.gz.javacodegen.core;
+package org.gz.javacodegen.core.logger;
 
-import org.gz.javacodegen.core.fileworker.treefolder.MainTreeFolderMaker;
-import org.gz.javacodegen.core.fileworker.treefolder.TestTreeFolderMaker;
 /**
- * TODO CLEAN!!!
+ * Helper method to print informationon Stdout and Stderr
  * @author gzussa
  *
  */
-public abstract class AbstractGenerator {
+public class SystemPrint {
 	
-	private String baseOutputPath;
-	private String inputFilePath;
-	
-	public AbstractGenerator(String baseOutputPath, String inputFilePath){
-		this.baseOutputPath = baseOutputPath;
-		this.inputFilePath = inputFilePath;
-		
-		MainTreeFolderMaker.getInstance().init(baseOutputPath+"/main/");
-		TestTreeFolderMaker.getInstance().init(baseOutputPath+"/test/");
+	/**
+	 * Display message on Stdout
+	 * @param message message to print
+	 */
+	public static void info(String message){
+		System.out.println(message);
 	}
 	
-	public abstract void generate();
-	
-	public String getXmlConfigFile(){
-		return inputFilePath;
+	/**
+	 * Display message on Stderr
+	 * @param message message to print
+	 */
+	public static void error(String message){
+		System.err.println(message);
 	}
 	
-//	public String getSrcRootPath(){
-//		return srcRootPath;
-//	}
-//	
-//	public String getTestRootPath(){
-//		return testRootPath;
-//	}
+	/**
+	 * Display message on Stdout if isDebug is set to true
+	 * @param isDebug Specify if the message should be print or not
+	 * @param message message to print
+	 */
+	public static void debug(boolean isDebug, String message){
+		if(isDebug){
+			System.out.println(message);
+		}
+	}
 }

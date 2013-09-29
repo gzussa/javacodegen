@@ -35,7 +35,7 @@ import org.gz.javacodegen.plugin.springroojpa.wrapper.Field;
 import org.gz.javacodegen.plugin.springroojpa.writer.EntityWriter;
 
 public class EntityWriter extends AbstractWriter<Entity> {	
-	static String ENTITY_TEMPLATE = "src/plugins/springRooJpa/resources/templates/entity/entityTemplate.tpl";
+	static String ENTITY_TEMPLATE = "templates/entity/entityTemplate.tpl";
 	static String ENTITY_ACTIVE_RECORD_TEMPLATE = "entityTemplate.activeRecord.tpl";
 	static String ENTITY_IMPORTS_TEMPLATE = "entityTemplate.imports.tpl";	
 	static String ENTITY_IMPORTS_ACTIVE_RECORDE_TEMPLATE = "entityTemplate.imports.activeRecord.tpl";	

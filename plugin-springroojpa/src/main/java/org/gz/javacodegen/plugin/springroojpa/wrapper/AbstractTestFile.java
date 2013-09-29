@@ -26,7 +26,7 @@ import org.gz.javacodegen.core.fileworker.treefolder.TestTreeFolderMaker;
 import org.gz.javacodegen.core.fileworker.treefolder.TreeFolderNode;
 import org.gz.javacodegen.core.wrapper.Wrapper;
 
-public abstract class AbstractTestFile extends Wrapper {
+public abstract class AbstractTestFile implements Wrapper {
 
 	protected String fileName;
 	protected String packageName;
@@ -38,7 +38,6 @@ public abstract class AbstractTestFile extends Wrapper {
 		this.location = TestTreeFolderMaker.getInstance().addFileToTree(packageName+"."+fileName);
 	}
 	
-	@Override
 	public String getFilePath() {
 		return location.getIncrementalPath();
 	}

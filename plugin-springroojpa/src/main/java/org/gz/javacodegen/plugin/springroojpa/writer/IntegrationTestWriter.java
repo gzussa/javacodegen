@@ -31,7 +31,7 @@ import org.gz.javacodegen.plugin.springroojpa.wrapper.IntegrationTest;
 
 public class IntegrationTestWriter extends AbstractWriter<IntegrationTest>{
 
-	static String INTEGRATIONTEST_TEMPLATE = "src/plugins/springRooJpa/resources/templates/test/entityTestTemplates.integrationTest.tpl";
+	static String INTEGRATIONTEST_TEMPLATE = "templates/test/entityTestTemplates.integrationTest.tpl";
 	private Entity entity;
 	
 	private static final String[] CUSTOM_CODE_TAGS = {"//CUSTOM-CODE", "//END-CUSTOM-CODE"};
