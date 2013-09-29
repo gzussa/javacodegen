@@ -30,7 +30,6 @@ import org.gz.javacodegen.core.logger.SystemPrint;
 import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
-import org.kohsuke.args4j.ExampleMode;
 import org.kohsuke.args4j.Option;
 
 /**
@@ -41,17 +40,9 @@ import org.kohsuke.args4j.Option;
 public class Params {
 	
 	private static Logger logger = LogManager.getLogger(GeneratorFactory.class.getName());
-	
-	private static final String USAGE_EXAMPLES = "EXAMPLES:\n"
-			+ "java -jar javacodegen.jar -h : Display Javacodegen help \n"
-			+ "java -jar javacodegen.jar -h -p pluginname : Display plugin 'foo' help \n"
-			+ "java -jar javacodegen.jar -l : Display list of available plugins \n"
-			+ "java -jar javacodegen.jar -v : Display Javacodegen version \n"
-			+ "java -jar javacodegen.jar -v -p pluginname : Display plugin 'foo' version \n"
-			+ "java -jar javacodegen.jar outputfolder/ -p foo inputfile.xml : Run plugin 'foo' using inputfile.xml. outputfolder/ correspond to where the plugin is going to generate files \n"
-			+ "java -jar javacodegen.jar outputfolder/ -p foo inputfile1.xml inputfile2.xml ... : Same as above but with multiple input files\n";
+
 	/**
-	 * This option is used to deplay debug information in stdout
+	 * This option is used to display debug information in stdout
 	 */
 	@Option(name = "-x", required = false, aliases = {"--debug"}, usage = "Run Command in debug mode. This option can be used in every usage possible")
     private boolean debug;
@@ -177,6 +168,7 @@ public class Params {
             //If list option is used and no other options or arguments are set
             if(list && !version && !help && plugin == null && output == null && inputs == null){
             	printPluginList();
+            	return true;
             }
             
             //If version, help and list options are not used then plugin, output and input should be set
@@ -217,7 +209,7 @@ public class Params {
 	private void printUsage(CmdLineParser parser) {
 		SystemPrint.info("OPTIONS:");
 		parser.printUsage(System.out);
-		SystemPrint.info(USAGE_EXAMPLES);		
+		SystemPrint.info(Constants.USAGE_EXAMPLES);		
 	}
 	
 	/**
@@ -227,7 +219,7 @@ public class Params {
 	private void printErrorUsage(CmdLineParser parser) {
 		SystemPrint.error("OPTIONS:");
 		parser.printUsage(System.err);
-		SystemPrint.error(USAGE_EXAMPLES);		
+		SystemPrint.error(Constants.USAGE_EXAMPLES);		
 	}
 
 }

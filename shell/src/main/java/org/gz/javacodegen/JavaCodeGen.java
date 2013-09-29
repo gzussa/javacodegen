@@ -74,8 +74,8 @@ public class JavaCodeGen {
         SystemPrint.debug(params.isDebug(), "Inputs : "+params.getInputs());
         SystemPrint.debug(params.isDebug(), "Output : "+params.getOutput());
         
-//        GeneratorFactory generatorFactory = new GeneratorFactory(params);
-//        generatorFactory.generate();
+        GeneratorFactory generatorFactory = new GeneratorFactory(params);
+        generatorFactory.generate();
 	}
 	
 //	private void init(String[] args){

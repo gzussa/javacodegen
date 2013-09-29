@@ -25,7 +25,7 @@ package org.gz.javacodegen.core.logger;
 /**
  * Helper method to print informationon Stdout and Stderr
  * @author gzussa
- *
+ * TODO integrate with Logger!!
  */
 public class SystemPrint {
 	
