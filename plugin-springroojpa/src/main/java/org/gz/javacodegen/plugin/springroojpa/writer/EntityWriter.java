@@ -58,19 +58,18 @@ public class EntityWriter extends AbstractWriter<Entity> {
 	}
 
 	@Override
-	public Map<String, Object> getDataModel() {
+	public Map<String, Object> getDataModel(){
 		Map<String, Object> data = new HashMap<String, Object>();
         data.put("name", getWrapper().getFileName());
         data.put("packageName", getWrapper().getPackageName());
         data.put("serializable", getWrapper().getSerializable());
         data.put("sequenceName", getWrapper().getSequenceName());
         data.put("classicImports", ENTITY_IMPORTS_TEMPLATE);
-        try {
-			data.put("fieldsImports", getFieldsImports(getWrapper().getFields()));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        try{
+        	data.put("fieldsImport", this.getFieldsImports(getWrapper().getFields()));
+        } catch(Exception e){
+        	logger.error(e.getMessage());
+        }
         data.put("activeRecorde", getWrapper().getActiveRecord());
         data.put("activeRecordImports", ENTITY_IMPORTS_ACTIVE_RECORDE_TEMPLATE);
         data.put("table", getWrapper().getTable());

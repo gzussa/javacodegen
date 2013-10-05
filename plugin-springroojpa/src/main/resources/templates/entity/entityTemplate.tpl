@@ -13,6 +13,9 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 <#if activeRecorde==true>
 <#include activeRecordImports>
 </#if>
+<#list fieldsImport as fieldImport>
+import ${fieldImport};
+</#list>
 
 //CUSTOM-IMPORT
 <#if customImport??>${customImport}</#if>
