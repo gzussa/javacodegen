@@ -41,6 +41,10 @@ public abstract class AbstractTestFile implements Wrapper {
 	public String getFilePath() {
 		return location.getIncrementalPath();
 	}
+	
+	public String getPackageName(){
+		return packageName;
+	}
 
 	
 }
