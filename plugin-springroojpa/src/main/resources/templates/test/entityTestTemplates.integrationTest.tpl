@@ -61,9 +61,5 @@ public class ${entity.fileName}IntegrationTest {
     <#include persist>
 
 	@Test
-   	{{
-    	if repository.name != null AND service.name == null : include entityTestTemplates.integrationTest.repositoryRemove.tpl
-        else if service.name != null : include entityTestTemplates.integrationTest.serviceRemove.tpl
-        else : include entityTestTemplates.integrationTest.remove.tpl
-	}}
+	<#include remove>
 }
