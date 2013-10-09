@@ -5,6 +5,7 @@ package org.gz.javacodegen;
  *
  */
 public interface Constants {
+	
 	public static final String USAGE_EXAMPLES = "EXAMPLES:\n"
 			+ "java -jar javacodegen.jar -h : Display Javacodegen help \n"
 			+ "java -jar javacodegen.jar -h -p pluginname : Display plugin 'foo' help \n"
@@ -15,6 +16,8 @@ public interface Constants {
 			+ "java -jar javacodegen.jar outputfolder/ -p foo inputfile1.xml inputfile2.xml ... : Same as above but with multiple input files\n";
 	
 	public static final String VERSION = "JAVACODEGEN Version 0.0.1";
+	
+	public static final String OUTPUT = "OPTIONS:";
 	
 	public static final String PLUGINS = "- springroojpa \n"
 			+ "- brick";

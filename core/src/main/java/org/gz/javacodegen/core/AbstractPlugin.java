@@ -22,6 +22,8 @@
  */
 package org.gz.javacodegen.core;
 
+import java.util.List;
+
 import org.gz.javacodegen.core.fileworker.treefolder.MainTreeFolderMaker;
 import org.gz.javacodegen.core.fileworker.treefolder.TestTreeFolderMaker;
 /**
@@ -29,30 +31,14 @@ import org.gz.javacodegen.core.fileworker.treefolder.TestTreeFolderMaker;
  * @author gzussa
  *
  */
-public abstract class AbstractGenerator {
+public abstract class AbstractPlugin {
+
 	
-	private String baseOutputPath;
-	private String inputFilePath;
+	public AbstractPlugin(){}
 	
-	public AbstractGenerator(String baseOutputPath, String inputFilePath){
-		this.baseOutputPath = baseOutputPath;
-		this.inputFilePath = inputFilePath;
-		
-		MainTreeFolderMaker.getInstance().init(baseOutputPath+"/main/");
-		TestTreeFolderMaker.getInstance().init(baseOutputPath+"/test/");
-	}
-	
-	public abstract void generate();
-	
-	public String getXmlConfigFile(){
-		return inputFilePath;
-	}
-	
-//	public String getSrcRootPath(){
-//		return srcRootPath;
-//	}
-//	
-//	public String getTestRootPath(){
-//		return testRootPath;
-//	}
+	public abstract void run(String inputFile, String output);
+
+	public abstract void printUsage();
+
+	public abstract void printVersion();
 }

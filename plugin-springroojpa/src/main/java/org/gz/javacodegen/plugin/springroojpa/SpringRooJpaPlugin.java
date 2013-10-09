@@ -30,7 +30,7 @@ import javax.xml.bind.Unmarshaller;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.gz.javacodegen.core.AbstractGenerator;
+import org.gz.javacodegen.core.AbstractPlugin;
 import org.gz.javacodegen.core.fileworker.treefolder.MainTreeFolderMaker;
 import org.gz.javacodegen.core.fileworker.treefolder.TestTreeFolderMaker;
 import org.gz.javacodegen.plugin.springroojpa.wrapper.DodTest;
@@ -43,21 +43,21 @@ import org.gz.javacodegen.plugin.springroojpa.writer.RepositoryWriter;
 import org.gz.javacodegen.plugin.springroojpa.writer.ServiceImplWriter;
 import org.gz.javacodegen.plugin.springroojpa.writer.ServiceInterfaceWriter;
 
-public class SpringRooJpaGenerator extends AbstractGenerator {
+public class SpringRooJpaPlugin extends AbstractPlugin {
 	
-	static Logger logger = LogManager.getLogger(SpringRooJpaGenerator.class.getName());
+	static Logger logger = LogManager.getLogger(SpringRooJpaPlugin.class.getName());
 	
-	public SpringRooJpaGenerator(String srcRootPath, String xmlConfigFile){
-		super(srcRootPath, xmlConfigFile);
-//		TestTreeFolderMaker.getInstance().init(testRootPath);
-//		MainTreeFolderMaker.getInstance().init(srcRootPath);
+	public SpringRooJpaPlugin(){
+		super();
 	}
 
 	@Override
-	public void generate() {
+	public void run(String inputFile, String output) {
+		MainTreeFolderMaker.getInstance().init(output+"/main/");
+		TestTreeFolderMaker.getInstance().init(output+"/test/");
 		try {
 			 
-			File file = new File(getXmlConfigFile());
+			File file = new File(inputFile);
 			JAXBContext jaxbContext = JAXBContext.newInstance(Entity.class);
 	 
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
@@ -92,6 +92,18 @@ public class SpringRooJpaGenerator extends AbstractGenerator {
 		  } catch (JAXBException e) {
 			e.printStackTrace();
 		  }
+		
+	}
+
+	@Override
+	public void printUsage() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void printVersion() {
+		// TODO Auto-generated method stub
 		
 	}
 	

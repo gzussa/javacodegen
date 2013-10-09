@@ -20,12 +20,14 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
-package org.gz.javacodegen;
+package org.gz.javacodegen.args;
 
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.gz.javacodegen.Constants;
+import org.gz.javacodegen.PluginFactory;
 import org.gz.javacodegen.core.logger.SystemPrint;
 import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.CmdLineException;
@@ -37,9 +39,9 @@ import org.kohsuke.args4j.Option;
  * @author asansom, gzussa
  *
  */
-public class Params {
+public class Parser {
 	
-	private static Logger logger = LogManager.getLogger(GeneratorFactory.class.getName());
+	private static Logger logger = LogManager.getLogger(PluginFactory.class.getName());
 
 	/**
 	 * This option is used to display debug information in stdout
@@ -86,7 +88,7 @@ public class Params {
 	/**
 	 * Simple constructor. By default Version, debug and help option are disabled
 	 */
-    public Params(){
+    public Parser(){
     	version = false;
     	debug = false;
     	help = false;
@@ -127,10 +129,16 @@ public class Params {
 	 * This method checks if options and arguments sequences are valid. Although, this method doesn't check if values entered are correct but if options and arguments used as expected.
 	 * We check the form, not the content!
 	 * @param args to get and check
-	 * @return true if no issue occurs otherwise false.
-	 * TODO return a code (number) based on the usage. In the main class, add a switch case that would delegate logic to other specialized classes.
+	 * @return code (number) based on the usage.
+	 * 	-1 : An error occurred. Print Error Usage
+	 * 	0  : For plugin usage details action
+	 * 	1  : For tool usage details action
+	 *  2  : For plugin version detail action
+	 *  3  : For tool version detail action
+	 *  4  : For plugin list action
+	 *  5  : For plugin execution action
 	 */
-	public boolean loadAndCheckArgs(String[] args) {
+	public Integer loadAndCheckArgs(String[] args) {
 		//Initialise Arg4J
 		CmdLineParser parser = new CmdLineParser(this);
         parser.setUsageWidth(80);
@@ -144,36 +152,34 @@ public class Params {
             //If help option and potentially plugin option are set then all other option should be unset (except debug).
             if(help && !version && !list && output == null && inputs == null){
             	if(plugin != null){
-            		//TODO print plugin usage details
-            		return true;
+            		//print plugin usage details
+            		return 0;
             	}else{
             		//Print tool usage details
             		printUsage(parser);
-            		return true;
+            		return 1;
             	}
             }
      
             //If version option and potentially plugin option are set then all other option should be unset (except debug).
             if(version && !help  && !list && output == null && inputs == null){
             	if(plugin != null){
-            		//TODO print plugin usage details
-            		return true;
+            		//print plugin usage details
+            		return 2;
             	}else{
             		//Print tool version info
-            		printVersion();
-            		return true;
+            		return 3;
             	}
             }
             
             //If list option is used and no other options or arguments are set
             if(list && !version && !help && plugin == null && output == null && inputs == null){
-            	printPluginList();
-            	return true;
+            	return 4;
             }
             
             //If version, help and list options are not used then plugin, output and input should be set
             if(!version && !help && !list && plugin != null && output != null && inputs != null){
-            	return true;
+            	return 5;
             }
             
             //If none of the above conditions have been selected then it means that the tool wasn't used correctly
@@ -182,24 +188,7 @@ public class Params {
         }catch(CmdLineException e) {
         	printErrorUsage(parser);
         }
-        return false;
-	}
-	
-	/**
-	 * Print this of available plugins
-	 * TODO Move this function outside of this class and add more info to what's displayed.
-	 * Also fetch info dynamically
-	 */
-	private void printPluginList() {
-		SystemPrint.info(Constants.PLUGINS);
-	}
-
-	/**
-	 * Print tool Version
-	 * TODO Move this function outside of this class and add more info to what's displayed
-	 */
-	private void printVersion() {
-		SystemPrint.info(Constants.VERSION);
+        return -1;
 	}
 
 	/**
@@ -207,7 +196,7 @@ public class Params {
 	 * @param parser parser used to fetch arguments with arg4j
 	 */
 	private void printUsage(CmdLineParser parser) {
-		SystemPrint.info("OPTIONS:");
+		SystemPrint.info(Constants.OUTPUT);
 		parser.printUsage(System.out);
 		SystemPrint.info(Constants.USAGE_EXAMPLES);		
 	}
@@ -217,7 +206,7 @@ public class Params {
 	 * @param parser parser used to fetch arguments with arg4j
 	 */
 	private void printErrorUsage(CmdLineParser parser) {
-		SystemPrint.error("OPTIONS:");
+		SystemPrint.error(Constants.OUTPUT);
 		parser.printUsage(System.err);
 		SystemPrint.error(Constants.USAGE_EXAMPLES);		
 	}
