@@ -4,25 +4,16 @@
   <artifactId>javacodegen</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>javacodegen</name>
+  
   <packaging>pom</packaging>
   
   <dependencies>
-   	<!-- <dependency>
-  		<groupId>org.gz.javacodegen</groupId>
-		<artifactId>core</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.gz.javacodegen</groupId>
-  		<artifactId>plugin-springroojpa</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency> -->
-  	  <dependency>
-          <groupId>junit</groupId>
-          <artifactId>junit</artifactId>
-          <version>4.10</version>
-          <scope>test</scope>
-      </dependency>
+ 	  <dependency>
+       <groupId>junit</groupId>
+       <artifactId>junit</artifactId>
+       <version>4.10</version>
+       <scope>test</scope>
+     </dependency>
 	  <dependency>
 	    <groupId>org.apache.logging.log4j</groupId>
 	    <artifactId>log4j-api</artifactId>
@@ -43,17 +34,16 @@
         <artifactId>jaxb-impl</artifactId>
         <version>2.2.7</version>
       </dependency>
-      <dependency>
-	      <groupId>args4j</groupId>
-	      <artifactId>args4j</artifactId>
-	      <version>2.0.8</version>
-	    </dependency>
-	    <!-- <dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency> -->
+	  <dependency>
+	    <groupId>args4j</groupId>
+	    <artifactId>args4j</artifactId>
+	    <version>2.0.8</version>
+	  </dependency>
+	  <dependency>
+	    <groupId>org.reflections</groupId>
+	    <artifactId>reflections</artifactId>
+	    <version>0.9.9-RC1</version>
+	  </dependency>
   </dependencies>
   
   <dependencyManagement>
@@ -70,6 +60,11 @@
 			</dependency>
 			<dependency>
 				<groupId>org.gz.javacodegen</groupId>
+				<artifactId>plugin-template</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.gz.javacodegen</groupId>
 				<artifactId>shell</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>			
@@ -79,6 +74,32 @@
 	<modules>
 		<module>core</module>
 		<module>plugin-springroojpa</module>
+		<module>plugin-template</module>
 		<module>shell</module>
 	</modules>
+	
+	<!-- <build>
+		</plugins>
+			<plugin>
+	          <artifactId>maven-assembly-plugin</artifactId>
+	          <configuration>
+	                <archive>
+	                  <manifest>
+	                    <mainClass>org.gz.javacodegen.JavaCodeGen</mainClass>
+	                  </manifest>
+	                </archive>               
+	              <descriptorRef>jar-with-dependencies</descriptorRef>                  
+	          </configuration>
+	          <executions>
+	                <execution>
+	                  <id>make-jar-with-dependencies</id>
+	                  <phase>package</phase>
+	                  <goals>
+	                      <goal>single</goal>
+	                  </goals>
+	              </execution>
+	          </executions>
+	        </plugin>
+	    </plugins>
+    </build> -->
 </project>

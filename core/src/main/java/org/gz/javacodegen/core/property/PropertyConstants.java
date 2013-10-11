@@ -20,31 +20,14 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
-package org.gz.javacodegen.core;
+package org.gz.javacodegen.core.property;
 
-/**
- * Abstract Class and plugin entry point.
- * @author gzussa
- *
- */
-public abstract class AbstractPlugin {
+public interface PropertyConstants {
 
-	public AbstractPlugin(){}
+	public static final String PLUGIN_PREFIX_PROPERTY = "org.gz.javacodegen.plugin.";
 	
-	/**
-	 * Run plugin logic
-	 * @param inputFile
-	 * @param output
-	 */
-	public abstract void run(String inputFile, String output);
+	public static final String PLUGIN_SUFFIX_LOCATION_PROPERTY = ".location";
+	
+	public static final String PLUGIN_SUFFIX_DESCRIPTION_PROPERTY = ".description";
 
-	/**
-	 * Print plugin usage
-	 */
-	public abstract void printUsage();
-
-	/**
-	 * Print plugin version
-	 */
-	public abstract void printVersion();
 }

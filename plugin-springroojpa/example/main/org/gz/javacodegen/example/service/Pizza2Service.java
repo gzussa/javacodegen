@@ -1,8 +1,8 @@
-package org.gz.javacodegen.example.service;
+package org.gz.javacodegen.args.example.service;
 
 import java.util.List;
-import org.gz.javacodegen.example.domain.PizzaOrder;
-import org.gz.javacodegen.example.repository.PizzaRepository;
+import org.gz.javacodegen.args.example.domain.PizzaOrder;
+import org.gz.javacodegen.args.example.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

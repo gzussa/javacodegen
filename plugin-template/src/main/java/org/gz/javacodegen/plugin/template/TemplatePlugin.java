@@ -20,31 +20,36 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
-package org.gz.javacodegen.core;
+package org.gz.javacodegen.plugin.template;
 
+import org.gz.javacodegen.core.AbstractPlugin;
+import org.gz.javacodegen.core.logger.SystemPrint;
 /**
- * Abstract Class and plugin entry point.
+ * Template plugin used as demo example on how to create a new plugin
  * @author gzussa
  *
  */
-public abstract class AbstractPlugin {
+public class TemplatePlugin extends AbstractPlugin {
 
-	public AbstractPlugin(){}
-	
-	/**
-	 * Run plugin logic
-	 * @param inputFile
-	 * @param output
-	 */
-	public abstract void run(String inputFile, String output);
+	@Override
+	public void run(String inputFile, String output) {
+		SystemPrint.info("Plugin Execution:\n"
+				+ "Add your plugin logic here");
+		
+	}
 
-	/**
-	 * Print plugin usage
-	 */
-	public abstract void printUsage();
+	@Override
+	public void printUsage() {
+		SystemPrint.info("Template Plugin:\n"
+				+ "This plugin is just a template");
+		
+	}
 
-	/**
-	 * Print plugin version
-	 */
-	public abstract void printVersion();
+	@Override
+	public void printVersion() {
+		SystemPrint.info("Template Plugin:\n"
+				+ "Version 1");
+		
+	}
+
 }

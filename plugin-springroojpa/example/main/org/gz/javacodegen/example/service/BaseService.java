@@ -1,8 +1,8 @@
-package org.gz.javacodegen.example.service;
+package org.gz.javacodegen.args.example.service;
 
 import java.util.List;
-import org.gz.javacodegen.example.domain.Base;
-import org.gz.javacodegen.example.repository.BaseRepository;
+import org.gz.javacodegen.args.example.domain.Base;
+import org.gz.javacodegen.args.example.repository.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,6 +1,6 @@
-package org.gz.javacodegen.example.repository;
+package org.gz.javacodegen.args.example.repository;
 
-import org.gz.javacodegen.example.domain.PizzaOrder;
+import org.gz.javacodegen.args.example.domain.PizzaOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;

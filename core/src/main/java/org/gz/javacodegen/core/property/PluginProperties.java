@@ -20,31 +20,55 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
-package org.gz.javacodegen.core;
+package org.gz.javacodegen.core.property;
 
 /**
- * Abstract Class and plugin entry point.
+ * Plugin Property is a pojo object that contained basic and required plugin properties such as name, location and description
  * @author gzussa
  *
  */
-public abstract class AbstractPlugin {
-
-	public AbstractPlugin(){}
+public class PluginProperties {
+	private String name;
 	
-	/**
-	 * Run plugin logic
-	 * @param inputFile
-	 * @param output
-	 */
-	public abstract void run(String inputFile, String output);
+	private String location;
+	
+	private String description;
 
-	/**
-	 * Print plugin usage
-	 */
-	public abstract void printUsage();
+	public PluginProperties(String name, String location, String description) {
+		super();
+		this.name = name;
+		this.location = location;
+		this.description = description;
+	}
 
-	/**
-	 * Print plugin version
-	 */
-	public abstract void printVersion();
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		return "PluginProperties [name=" + name + ", location=" + location
+				+ ", description=" + description + "]";
+	}
+	
 }

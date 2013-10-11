@@ -23,19 +23,13 @@
 package org.gz.javacodegen;
 
 import java.io.File;
-import java.lang.reflect.Constructor;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.gz.javacodegen.args.Parser;
 import org.gz.javacodegen.core.AbstractPlugin;
 import org.gz.javacodegen.core.logger.SystemPrint;
-import org.gz.javacodegen.plugin.springroojpa.SpringRooJpaPlugin;
-import org.kohsuke.args4j.CmdLineException;
-import org.kohsuke.args4j.CmdLineParser;
 
 /**
  * Main class. This class delegate actions based on passed arguments

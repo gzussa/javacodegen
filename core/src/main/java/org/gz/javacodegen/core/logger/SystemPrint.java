@@ -23,7 +23,7 @@
 package org.gz.javacodegen.core.logger;
 
 /**
- * Helper method to print informationon Stdout and Stderr
+ * Helper method to print information on Stdout and Stderr
  * @author gzussa
  * TODO integrate with Logger!!
  */

@@ -1,4 +1,4 @@
-package org.gz.javacodegen.example.domain;
+package org.gz.javacodegen.args.example.domain;
 
 import java.io.Serializable;
 import org.apache.commons.lang3.builder.EqualsBuilder;

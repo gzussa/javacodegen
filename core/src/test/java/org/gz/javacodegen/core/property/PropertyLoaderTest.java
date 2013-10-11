@@ -1,0 +1,61 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2013 Gregory
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+ */
+package org.gz.javacodegen.core.property;
+
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Properties;
+
+import org.junit.Test;
+
+import junit.framework.TestCase;
+/**
+ * Test Class for PropertyLoader
+ * @author gzussa
+ *
+ */
+public class PropertyLoaderTest /*extends TestCase*/ {
+	
+//	@Test
+//	public void testPropertyLoader() throws IOException{
+//		
+//		Properties property = PropertyLoader.getProperties();
+//		System.out.println(property);
+//		assertTrue(property.getProperty("org.gz.javacodegen.plugin.test.location") != null);
+//		
+//		List<PluginProperties> pluginProperties = PropertyLoader.getPluginPropertiesList();
+//		boolean isTemplatePlugin = false;
+//		for(Iterator<PluginProperties> pluginPropertiesIterator = pluginProperties.iterator(); pluginPropertiesIterator.hasNext();){
+//			PluginProperties currentPluginProperties = pluginPropertiesIterator.next();
+//			if(currentPluginProperties.getName().equals("test")){
+//				isTemplatePlugin = true;
+//				assertTrue(currentPluginProperties.getLocation().equals("Test"));
+//				assertTrue(currentPluginProperties.getDescription().equals("Test"));
+//			}
+//		}
+//		assertTrue(isTemplatePlugin);
+//		
+//	}
+
+}
