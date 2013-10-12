@@ -24,11 +24,9 @@ package org.gz.javacodegen.args;
 
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.gz.javacodegen.Constants;
-import org.gz.javacodegen.PluginFactory;
-import org.gz.javacodegen.core.logger.SystemPrint;
+import org.gz.javacodegen.core.logger.LogConfigurator;
+import org.gz.javacodegen.core.logger.LogHelper;
 import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
@@ -41,7 +39,7 @@ import org.kohsuke.args4j.Option;
  */
 public class Parser {
 	
-	private static Logger logger = LogManager.getLogger(PluginFactory.class.getName());
+	private static LogHelper logger = LogConfigurator.getLogger(Parser.class.getName());
 
 	/**
 	 * This option is used to display debug information in stdout
@@ -147,7 +145,8 @@ public class Parser {
             // parse the arguments.
             parser.parseArgument(args);
             
-            //Debug option can be set in any case.
+            //Debug option can be set in any case
+            LogConfigurator.initLogger(debug);
             
             //If help option and potentially plugin option are set then all other option should be unset (except debug).
             if(help && !version && !list && output == null && inputs == null){
@@ -196,9 +195,9 @@ public class Parser {
 	 * @param parser parser used to fetch arguments with arg4j
 	 */
 	private void printUsage(CmdLineParser parser) {
-		SystemPrint.info(Constants.OUTPUT);
+		logger.info(Constants.OUTPUT);
 		parser.printUsage(System.out);
-		SystemPrint.info(Constants.USAGE_EXAMPLES);		
+		logger.info(Constants.USAGE_EXAMPLES);		
 	}
 	
 	/**
@@ -206,9 +205,9 @@ public class Parser {
 	 * @param parser parser used to fetch arguments with arg4j
 	 */
 	private void printErrorUsage(CmdLineParser parser) {
-		SystemPrint.error(Constants.OUTPUT);
+		logger.error(Constants.OUTPUT);
 		parser.printUsage(System.err);
-		SystemPrint.error(Constants.USAGE_EXAMPLES);		
+		logger.error(Constants.USAGE_EXAMPLES);		
 	}
 
 }

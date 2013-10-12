@@ -41,6 +41,4 @@ public interface Constants {
 	
 	public static final String OUTPUT = "OPTIONS:";
 	
-	public static final String PLUGINS = "- springroojpa \n"
-			+ "- brick";
 }

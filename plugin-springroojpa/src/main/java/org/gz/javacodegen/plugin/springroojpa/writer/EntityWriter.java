@@ -27,19 +27,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.gz.javacodegen.core.fileworker.AbstractWriter;
+import org.gz.javacodegen.core.logger.LogConfigurator;
+import org.gz.javacodegen.core.logger.LogHelper;
 import org.gz.javacodegen.plugin.springroojpa.wrapper.Entity;
 import org.gz.javacodegen.plugin.springroojpa.wrapper.Field;
 import org.gz.javacodegen.plugin.springroojpa.writer.EntityWriter;
 
 public class EntityWriter extends AbstractWriter<Entity> {	
+	private static LogHelper logger = LogConfigurator.getLogger(EntityWriter.class.getName());
+	
 	static String ENTITY_TEMPLATE = "templates/entity/entityTemplate.tpl";
 	static String ENTITY_ACTIVE_RECORD_TEMPLATE = "entityTemplate.activeRecord.tpl";
 	static String ENTITY_IMPORTS_TEMPLATE = "entityTemplate.imports.tpl";	
-	static String ENTITY_IMPORTS_ACTIVE_RECORDE_TEMPLATE = "entityTemplate.imports.activeRecord.tpl";	
-	static Logger logger = LogManager.getLogger(EntityWriter.class.getName());
+	static String ENTITY_IMPORTS_ACTIVE_RECORDE_TEMPLATE = "entityTemplate.imports.activeRecord.tpl";
 	
 	static final String[] CUSTOM_CODE_TAGS = {"//CUSTOM-CODE", "//END-CUSTOM-CODE"};
 	static final String[] CUSTOM_IMPORT_TAGS = {"//CUSTOM-IMPORT", "//END-CUSTOM-IMPORT"};

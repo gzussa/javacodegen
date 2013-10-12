@@ -23,6 +23,8 @@
 package org.gz.javacodegen.args;
 
 import org.gz.javacodegen.args.Parser;
+import org.gz.javacodegen.core.logger.LogConfigurator;
+import org.gz.javacodegen.core.logger.LogHelper;
 import org.junit.Test;
 
 import junit.framework.TestCase;
@@ -32,6 +34,7 @@ import junit.framework.TestCase;
  *
  */
 public class ParserTest extends TestCase {
+	private static LogHelper logger = LogConfigurator.getLogger(ParserTest.class.getName());
 	
 	@Test
 	public void testPluginUsageDetail(){

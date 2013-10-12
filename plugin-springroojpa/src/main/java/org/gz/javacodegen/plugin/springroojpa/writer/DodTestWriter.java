@@ -30,7 +30,7 @@ import org.gz.javacodegen.plugin.springroojpa.wrapper.DodTest;
 import org.gz.javacodegen.plugin.springroojpa.wrapper.Entity;
 
 public class DodTestWriter extends AbstractWriter<DodTest> {
-	
+			
 	static String DODTEST_TEMPLATE = "templates/test/entityTestTemplates.dataOnDemand.tpl";
 	private Entity entity;
 	

@@ -28,11 +28,11 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.gz.javacodegen.core.AbstractPlugin;
 import org.gz.javacodegen.core.fileworker.treefolder.MainTreeFolderMaker;
 import org.gz.javacodegen.core.fileworker.treefolder.TestTreeFolderMaker;
+import org.gz.javacodegen.core.logger.LogConfigurator;
+import org.gz.javacodegen.core.logger.LogHelper;
 import org.gz.javacodegen.plugin.springroojpa.wrapper.DodTest;
 import org.gz.javacodegen.plugin.springroojpa.wrapper.Entity;
 import org.gz.javacodegen.plugin.springroojpa.wrapper.IntegrationTest;
@@ -45,7 +45,7 @@ import org.gz.javacodegen.plugin.springroojpa.writer.ServiceInterfaceWriter;
 
 public class SpringRooJpaPlugin extends AbstractPlugin {
 	
-	static Logger logger = LogManager.getLogger(SpringRooJpaPlugin.class.getName());
+	private static LogHelper logger = LogConfigurator.getLogger(SpringRooJpaPlugin.class.getName());
 	
 	public SpringRooJpaPlugin(){
 		super();

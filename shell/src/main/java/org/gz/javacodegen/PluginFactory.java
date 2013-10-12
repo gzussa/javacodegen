@@ -27,15 +27,15 @@ import java.lang.reflect.Constructor;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.gz.javacodegen.core.AbstractPlugin;
-import org.gz.javacodegen.core.logger.SystemPrint;
+import org.gz.javacodegen.core.logger.LogConfigurator;
+import org.gz.javacodegen.core.logger.LogHelper;
 import org.gz.javacodegen.core.property.PluginProperties;
 import org.gz.javacodegen.core.property.PropertyLoader;
 
 public class PluginFactory {
-	static Logger logger = LogManager.getLogger(PluginFactory.class.getName());
+	
+	private static LogHelper logger = LogConfigurator.getLogger(PluginFactory.class.getName());
 
 	private List<PluginProperties> pluginProperties = null;
 	
@@ -57,7 +57,7 @@ public class PluginFactory {
 		try {
 			pluginProperties = PropertyLoader.getPluginPropertiesList();
 		} catch (IOException e) {
-			SystemPrint.error("Properties files not set correctly. Plese check that all you plugins property file are set correctly:\n"
+			logger.error("Properties files not set correctly. Plese check that all you plugins property file are set correctly:\n"
 					+ "Each Plugin should have at least two properties:\n"
 					+ "org.gz.javacodegen.plugin.<pluginName>.location=<PluginMainClassLocation>\n"
 					+ "org.gz.javacodegen.plugin.<pluginName>.description=<PluginDescription>");
@@ -67,7 +67,7 @@ public class PluginFactory {
 			//Check that PluginProperties are set correctly
 			PluginProperties currentPluginProperties = pluginPropertiesIterator.next();
 			if(currentPluginProperties.getLocation() == null || currentPluginProperties.getDescription() == null){
-				SystemPrint.error("Plugin "+currentPluginProperties.getName()+" is not configured correctly. \n"
+				logger.error("Plugin "+currentPluginProperties.getName()+" is not configured correctly. \n"
 						+ "Please set plugin properties correctly");
 				System.exit(-1);
 			}
@@ -88,7 +88,7 @@ public class PluginFactory {
 			}
 		}
 		if(pluginProperty == null){
-			SystemPrint.error("Plugin "+pluginName+" is not a correct plugin \n"
+			logger.error("Plugin "+pluginName+" is not a correct plugin \n"
 					+ "Please, select one of the following available plugins:");
 			printPluginList();
 			//If plugin name is not valid we exit with error code -1!
@@ -102,7 +102,7 @@ public class PluginFactory {
 			Constructor<?> constructor = pluginClass.getConstructor();
 			plugin = (AbstractPlugin) constructor.newInstance();
 		} catch (Exception e) {
-			SystemPrint.error("An Exception occcured. Not able to load plugin "+pluginName+"("+pluginLocation+")");
+			logger.error("An Exception occcured. Not able to load plugin "+pluginName+"("+pluginLocation+")");
 			e.printStackTrace();
 			System.exit(-1);
 		}
@@ -115,10 +115,10 @@ public class PluginFactory {
 	 * Also fetch info dynamically
 	 */
 	public void printPluginList() {
-		SystemPrint.info("Plugin list:");
+		logger.info("Plugin list:");
 		for(Iterator<PluginProperties> pluginPropertiesIterator = pluginProperties.iterator(); pluginPropertiesIterator.hasNext();){
 			PluginProperties currentPluginProperties = pluginPropertiesIterator.next();
-			SystemPrint.info(currentPluginProperties.getName()+" : "+currentPluginProperties.getDescription());
+			logger.info(currentPluginProperties.getName()+" : "+currentPluginProperties.getDescription());
 		}
 	}
 }

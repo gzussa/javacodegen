@@ -23,31 +23,34 @@
 package org.gz.javacodegen.plugin.template;
 
 import org.gz.javacodegen.core.AbstractPlugin;
-import org.gz.javacodegen.core.logger.SystemPrint;
+import org.gz.javacodegen.core.logger.LogConfigurator;
+import org.gz.javacodegen.core.logger.LogHelper;
 /**
  * Template plugin used as demo example on how to create a new plugin
  * @author gzussa
  *
  */
 public class TemplatePlugin extends AbstractPlugin {
+	
+	static LogHelper logger = LogConfigurator.getLogger(TemplatePlugin.class.getName());
 
 	@Override
 	public void run(String inputFile, String output) {
-		SystemPrint.info("Plugin Execution:\n"
+		logger.info("Plugin Execution:\n"
 				+ "Add your plugin logic here");
 		
 	}
 
 	@Override
 	public void printUsage() {
-		SystemPrint.info("Template Plugin:\n"
+		logger.info("Template Plugin:\n"
 				+ "This plugin is just a template");
 		
 	}
 
 	@Override
 	public void printVersion() {
-		SystemPrint.info("Template Plugin:\n"
+		logger.info("Template Plugin:\n"
 				+ "Version 1");
 		
 	}

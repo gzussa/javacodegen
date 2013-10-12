@@ -27,7 +27,7 @@ import org.gz.javacodegen.core.fileworker.treefolder.TreeFolderNode;
 import org.gz.javacodegen.core.wrapper.Wrapper;
 
 public abstract class AbstractTestFile implements Wrapper {
-
+	
 	protected String fileName;
 	protected String packageName;
 	protected TreeFolderNode location;

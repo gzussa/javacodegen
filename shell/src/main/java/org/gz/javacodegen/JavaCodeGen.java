@@ -25,11 +25,10 @@ package org.gz.javacodegen;
 import java.io.File;
 import java.util.Iterator;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.gz.javacodegen.args.Parser;
 import org.gz.javacodegen.core.AbstractPlugin;
-import org.gz.javacodegen.core.logger.SystemPrint;
+import org.gz.javacodegen.core.logger.LogConfigurator;
+import org.gz.javacodegen.core.logger.LogHelper;
 
 /**
  * Main class. This class delegate actions based on passed arguments
@@ -38,7 +37,7 @@ import org.gz.javacodegen.core.logger.SystemPrint;
  */
 public class JavaCodeGen {
 
-	static Logger logger = LogManager.getLogger(JavaCodeGen.class.getName());
+	private static LogHelper logger = LogConfigurator.getLogger(JavaCodeGen.class.getName());
 	
 	//Basic constructor
 	public JavaCodeGen(){}	
@@ -48,11 +47,11 @@ public class JavaCodeGen {
         Integer checkCode = parser.loadAndCheckArgs(args); 
       
         //Display arguments
-        SystemPrint.debug(parser.isDebug(), "Help : "+parser.isHelp());
-        SystemPrint.debug(parser.isDebug(), "Version : "+parser.isVersion());
-        SystemPrint.debug(parser.isDebug(), "Plugin : "+parser.getPlugin());
-        SystemPrint.debug(parser.isDebug(), "Inputs : "+parser.getInputs());
-        SystemPrint.debug(parser.isDebug(), "Output : "+parser.getOutput());
+        logger.debug("Help : "+parser.isHelp());
+        logger.debug("Version : "+parser.isVersion());
+        logger.debug("Plugin : "+parser.getPlugin());
+        logger.debug("Inputs : "+parser.getInputs());
+        logger.debug("Output : "+parser.getOutput());
         
         PluginFactory pluginFactory = new PluginFactory();
         AbstractPlugin plugin = null;
@@ -99,6 +98,6 @@ public class JavaCodeGen {
 	 * Print tool Version
 	 */
 	private static void printToolVersion() {
-		SystemPrint.info(Constants.VERSION);
+		logger.info(Constants.VERSION);
 	}
 }

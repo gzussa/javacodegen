@@ -36,6 +36,8 @@ import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.gz.javacodegen.core.logger.LogConfigurator;
+import org.gz.javacodegen.core.logger.LogHelper;
 import org.gz.javacodegen.core.wrapper.Wrapper;
 
 import freemarker.template.Configuration;
@@ -44,7 +46,7 @@ import freemarker.template.TemplateException;
 
 public abstract class AbstractWriter<E extends Wrapper> {
 	
-	static Logger logger = LogManager.getLogger(AbstractWriter.class.getName());
+	private static LogHelper logger = LogConfigurator.getLogger(AbstractWriter.class.getName());
 	
 	private E wrapper;
 	

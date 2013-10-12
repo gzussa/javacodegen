@@ -24,8 +24,6 @@ package org.gz.javacodegen.plugin.springroojpa.wrapper;
 
 import javax.xml.bind.annotation.XmlAttribute;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.gz.javacodegen.core.fileworker.treefolder.MainTreeFolderMaker;
 import org.gz.javacodegen.core.fileworker.treefolder.TreeFolderNode;
 import org.gz.javacodegen.plugin.springroojpa.wrapper.AbstractSourceFile;
@@ -37,7 +35,6 @@ public abstract class AbstractSourceFile implements Wrapper {
 	protected String varName;
 	protected String packageName;
 	protected TreeFolderNode location;
-	static Logger logger = LogManager.getLogger(AbstractSourceFile.class.getName());
 	
 	public AbstractSourceFile(){
 		super();
