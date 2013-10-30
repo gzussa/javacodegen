@@ -32,11 +32,9 @@ import org.gz.javacodegen.core.logger.LogConfigurator;
 import org.gz.javacodegen.core.logger.LogHelper;
 import org.gz.javacodegen.plugin.springroojpa.wrapper.Entity;
 import org.gz.javacodegen.plugin.springroojpa.wrapper.Field;
-import org.gz.javacodegen.plugin.springroojpa.writer.EntityWriter;
 
 public class EntityWriter extends AbstractWriter<Entity> {	
-	private static LogHelper logger = LogConfigurator.getLogger(EntityWriter.class.getName());
-	
+	private static LogHelper logger = LogConfigurator.getLogger(EntityWriter.class.getName());	
 	static String ENTITY_TEMPLATE = "templates/entity/entityTemplate.tpl";
 	static String ENTITY_ACTIVE_RECORD_TEMPLATE = "entityTemplate.activeRecord.tpl";
 	static String ENTITY_IMPORTS_TEMPLATE = "entityTemplate.imports.tpl";	
