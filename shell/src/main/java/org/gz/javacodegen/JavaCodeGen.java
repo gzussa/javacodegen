@@ -44,7 +44,7 @@ public class JavaCodeGen {
 
 	public static void main(String[] args){
         Parser parser = new Parser();
-        Integer checkCode = parser.loadAndCheckArgs(args); 
+        Integer checkCode = parser.loadAndCheckArgs(args);
       
         //Display arguments
         logger.debug("Help : "+parser.isHelp());

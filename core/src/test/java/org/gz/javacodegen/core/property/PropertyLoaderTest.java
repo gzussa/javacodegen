@@ -22,14 +22,6 @@
  */
 package org.gz.javacodegen.core.property;
 
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
-
-import org.junit.Test;
-
-import junit.framework.TestCase;
 /**
  * Test Class for PropertyLoader
  * @author gzussa

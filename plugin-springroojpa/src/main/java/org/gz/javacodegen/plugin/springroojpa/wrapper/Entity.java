@@ -29,11 +29,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.gz.javacodegen.plugin.springroojpa.wrapper.Field;
-import org.gz.javacodegen.plugin.springroojpa.wrapper.Repository;
-import org.gz.javacodegen.plugin.springroojpa.wrapper.Service;
-import org.gz.javacodegen.plugin.springroojpa.wrapper.AbstractSourceFile;
-
 @XmlRootElement(name="entity")
 public class Entity extends AbstractSourceFile{
 	

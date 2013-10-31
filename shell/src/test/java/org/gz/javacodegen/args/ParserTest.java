@@ -22,18 +22,19 @@
  */
 package org.gz.javacodegen.args;
 
-import org.gz.javacodegen.args.Parser;
+import junit.framework.TestCase;
+
 import org.gz.javacodegen.core.logger.LogConfigurator;
 import org.gz.javacodegen.core.logger.LogHelper;
 import org.junit.Test;
-
-import junit.framework.TestCase;
 /**
  * Test Class for Parser
  * @author gzussa
  *
  */
 public class ParserTest extends TestCase {
+	
+	@SuppressWarnings("unused")
 	private static LogHelper logger = LogConfigurator.getLogger(ParserTest.class.getName());
 	
 	@Test

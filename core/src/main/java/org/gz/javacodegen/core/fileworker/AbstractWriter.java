@@ -34,8 +34,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.gz.javacodegen.core.logger.LogConfigurator;
 import org.gz.javacodegen.core.logger.LogHelper;
 import org.gz.javacodegen.core.wrapper.Wrapper;
@@ -85,6 +83,7 @@ public abstract class AbstractWriter<E extends Wrapper> {
 	 */
 	public void writeOnDisk(String rootPath){
 		Configuration cfg = new Configuration();
+		cfg.setClassForTemplateLoading(this.getClass(), "/");
         try {
         	File outputFile = new File(rootPath+wrapper.getFilePath());
         	
@@ -100,6 +99,7 @@ public abstract class AbstractWriter<E extends Wrapper> {
         	}
         	
             //Load template from source folder
+        	
             Template template = cfg.getTemplate(getTemplate(wrapper));
             
             // Build the data-model

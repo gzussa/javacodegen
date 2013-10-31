@@ -33,51 +33,52 @@ import org.gz.javacodegen.core.logger.LogHelper;
 import org.gz.javacodegen.plugin.springroojpa.wrapper.Entity;
 import org.gz.javacodegen.plugin.springroojpa.wrapper.Field;
 
-public class EntityWriter extends AbstractWriter<Entity> {	
-	private static LogHelper logger = LogConfigurator.getLogger(EntityWriter.class.getName());	
+public class EntityWriter extends AbstractWriter<Entity> {
+	private static LogHelper logger = LogConfigurator.getLogger(EntityWriter.class.getName());
 	static String ENTITY_TEMPLATE = "templates/entity/entityTemplate.tpl";
 	static String ENTITY_ACTIVE_RECORD_TEMPLATE = "entityTemplate.activeRecord.tpl";
-	static String ENTITY_IMPORTS_TEMPLATE = "entityTemplate.imports.tpl";	
+	static String ENTITY_IMPORTS_TEMPLATE = "entityTemplate.imports.tpl";
 	static String ENTITY_IMPORTS_ACTIVE_RECORDE_TEMPLATE = "entityTemplate.imports.activeRecord.tpl";
-	
-	static final String[] CUSTOM_CODE_TAGS = {"//CUSTOM-CODE", "//END-CUSTOM-CODE"};
-	static final String[] CUSTOM_IMPORT_TAGS = {"//CUSTOM-IMPORT", "//END-CUSTOM-IMPORT"};
-	
+
+	static final String[] CUSTOM_CODE_TAGS = { "//CUSTOM-CODE",
+			"//END-CUSTOM-CODE" };
+	static final String[] CUSTOM_IMPORT_TAGS = { "//CUSTOM-IMPORT",
+			"//END-CUSTOM-IMPORT" };
+
 	private Map<String, String> javaTypeToImports;
-	
+
 	public EntityWriter(Entity entity) {
 		super(entity);
-		javaTypeToImports = new HashMap<String, String>();
-		javaTypeToImports.put("Date", "java.util.Date");
 	}
-	
+
 	@Override
 	public String getTemplate(Entity entity) {
 		return ENTITY_TEMPLATE;
 	}
 
 	@Override
-	public Map<String, Object> getDataModel(){
+	public Map<String, Object> getDataModel() {
 		Map<String, Object> data = new HashMap<String, Object>();
-        data.put("name", getWrapper().getFileName());
-        data.put("packageName", getWrapper().getPackageName());
-        data.put("serializable", getWrapper().getSerializable());
-        data.put("sequenceName", getWrapper().getSequenceName());
-        data.put("classicImports", ENTITY_IMPORTS_TEMPLATE);
-        try{
-        	data.put("fieldsImport", this.getFieldsImports(getWrapper().getFields()));
-        } catch(Exception e){
-        	logger.error(e.getMessage());
-        }
-        data.put("activeRecorde", getWrapper().getActiveRecord());
-        data.put("activeRecordImports", ENTITY_IMPORTS_ACTIVE_RECORDE_TEMPLATE);
-        data.put("table", getWrapper().getTable());
-        data.put("schema", getWrapper().getSchema());
-        data.put("catalogue", getWrapper().getCatalogue());
-        data.put("sequenceName", getWrapper().getSequenceName());
-        data.put("fields", getWrapper().getFields());
-        data.put("relationships", getWrapper().getRelationships());
-        data.put("activeRecordTemplate", ENTITY_ACTIVE_RECORD_TEMPLATE);
+		data.put("name", getWrapper().getFileName());
+		data.put("packageName", getWrapper().getPackageName());
+		data.put("serializable", getWrapper().getSerializable());
+		data.put("sequenceName", getWrapper().getSequenceName());
+		data.put("classicImports", ENTITY_IMPORTS_TEMPLATE);
+		try {
+			data.put("fieldsImport",
+					this.getFieldsImports(getWrapper().getFields()));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		data.put("activeRecorde", getWrapper().getActiveRecord());
+		data.put("activeRecordImports", ENTITY_IMPORTS_ACTIVE_RECORDE_TEMPLATE);
+		data.put("table", getWrapper().getTable());
+		data.put("schema", getWrapper().getSchema());
+		data.put("catalogue", getWrapper().getCatalogue());
+		data.put("sequenceName", getWrapper().getSequenceName());
+		data.put("fields", getWrapper().getFields());
+		data.put("relationships", getWrapper().getRelationships());
+		data.put("activeRecordTemplate", ENTITY_ACTIVE_RECORD_TEMPLATE);
 		return data;
 	}
 
@@ -88,22 +89,24 @@ public class EntityWriter extends AbstractWriter<Entity> {
 		tags.put("customImport", CUSTOM_IMPORT_TAGS);
 		return tags;
 	}
-	
-	public List<String> getFieldsImports(List<Field> fields) throws Exception{
+
+	public List<String> getFieldsImports(List<Field> fields) throws Exception {
 		ArrayList<String> imports = new ArrayList<String>();
-		for(Field field : fields){
-			if(field.getType().contains(".")){
+		for (Field field : fields) {
+			if (field.getType().contains(".")) {
 				logger.debug("Found some custom fields adding imports");
 				imports.add(field.getType());
 			} else {
-				if(javaTypeToImports.containsKey(field.getType())){
+				if (javaTypeToImports.containsKey(field.getType())) {
 					imports.add(javaTypeToImports.get(field.getType()));
 				} else {
-					throw new Exception(field.getType()+" : unknow type please specify the package in the xml file");
+					throw new Exception(
+							field.getType()
+									+ " : unknow type please specify the package in the xml file");
 				}
 			}
 		}
 		return imports;
 	}
-	
+
 }
