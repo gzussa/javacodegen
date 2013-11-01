@@ -1,0 +1,64 @@
+<!ELEMENT entity (fields, relationships, repository, service)>
+	<!ATTLIST entity
+		xmlns:entity CDATA "http://www.myproject.com/xml/entity"
+		xmlns:field CDATA "http://www.myproject.com/xml/field"
+		name CDATA #REQUIRED
+		packageName CDATA #REQUIRED
+		entity:persistenceType (jpa|jdo) #REQUIRED
+		entity:serializable (true|false) "true"
+		entity:activeRecorde (true|false) "false"
+		entity:sequenceName CDATA #IMPLIED
+		entity:catalogue CDATA #IMPLIED
+		entity:schema CDATA #IMPLIED
+		entity:table CDATA #IMPLIED
+		entity:repositoryName CDATA #IMPLIED
+		entity:repositoryPackage CDATA #IMPLIED
+		entity:serviceName CDATA #IMPLIED
+		entity:servicePackage CDATA #IMPLIED>
+	
+	<!ELEMENT fields (field*)>
+		<!ELEMENT field (#PCDATA)>
+			<!ATTLIST field
+				field:name CDATA #REQUIRED
+				field:type CDATA #REQUIRED
+				field:persistenceType CDATA #IMPLIED
+				field:notNull (true|false) "false"
+				field:defaultValue CDATA #IMPLIED
+				field:isTransient (true|false) "false"
+				field:unique (true|false) "false"
+				field:future (true|false) #IMPLIED
+				field:past (true|false) #IMPLIED
+				field:temporalType CDATA "TemporalType.TIMESTAMP"
+				field:dateTimeFormatPattern CDATA "M-"
+				field:contentType CDATA #IMPLIED
+				field:decimalMin CDATA #IMPLIED
+				field:decimalMax CDATA #IMPLIED
+				field:digitInteger CDATA #IMPLIED
+				field:digitFraction CDATA #IMPLIED
+				field:min CDATA #IMPLIED
+				field:max CDATA #IMPLIED
+				field:sizeMin CDATA #IMPLIED
+				field:sizeMax CDATA #IMPLIED
+				field:regexp CDATA #IMPLIED>
+				
+	<!ELEMENT relationships (relationship*)>
+		<!ELEMENT relationship (#PCDATA)>
+			<!ATTLIST relationship
+				field:name CDATA #REQUIRED
+				field:type CDATA #REQUIRED
+				field:notNull (true|false) "false"
+				field:mappedBy CDATA #IMPLIED
+				field:cardinality (ManyToMany|ManyToOne|OneToMany|OneToOne) #REQUIRED
+				field:fetch (LAZY|EAGER) #IMPLIED
+				field:joinColumnName CDATA #IMPLIED
+				field:referencedColumnName CDATA #IMPLIED>
+				
+	<!ELEMENT repository (#PCDATA)>
+		<!ATTLIST repository
+			name CDATA #REQUIRED
+			packageName CDATA #REQUIRED>
+	
+	<!ELEMENT service (#PCDATA)>
+		<!ATTLIST service
+			name CDATA #REQUIRED
+			packageName CDATA #REQUIRED>

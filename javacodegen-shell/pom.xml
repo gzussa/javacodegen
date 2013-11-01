@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>	
+	<parent>
+		<groupId>org.gz.javacodegen</groupId>
+		<artifactId>javacodegen</artifactId>
+		<version>0.0.1</version>
+	</parent>
+
+	<artifactId>javacodegen-shell</artifactId>
+	<name>javacodegen-shell</name>
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.gz.javacodegen</groupId>
+			<artifactId>javacodegen-core</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.gz.javacodegen</groupId>
+			<artifactId>javacodegen-plugin-springroojpa</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.gz.javacodegen</groupId>
+			<artifactId>javacodegen-plugin-template</artifactId>
+			<version>0.0.1</version>			
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.2.7</version>
+		</dependency>
+		<dependency>
+			<groupId>args4j</groupId>
+			<artifactId>args4j</artifactId>
+			<version>2.0.8</version>
+		</dependency>
+	</dependencies>
+</project>
