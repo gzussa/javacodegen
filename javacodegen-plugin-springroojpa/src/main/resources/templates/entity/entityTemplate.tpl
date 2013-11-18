@@ -13,9 +13,11 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 <#if activeRecorde==true>
 <#include activeRecordImports>
 </#if>
+<#if fieldsImport??>
 <#list fieldsImport as fieldImport>
 import ${fieldImport};
 </#list>
+</#if>
 
 //CUSTOM-IMPORT
 <#if customImport??>${customImport}</#if>
@@ -56,7 +58,7 @@ public class ${name} <#if serializable==true>implements Serializable</#if>{
 	<#if field.regexp!="">@Pattern(regexp = "${field.regexp}")</#if>
 	</#compress>
 
-    private ${field.type} ${field.name};
+    private<#if field.isTransient==true> transient</#if> ${field.type} ${field.name};
     
 	</#list>
 	</#if>

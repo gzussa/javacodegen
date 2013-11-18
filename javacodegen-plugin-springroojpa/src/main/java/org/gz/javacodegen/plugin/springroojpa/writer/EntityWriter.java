@@ -49,6 +49,8 @@ public class EntityWriter extends AbstractWriter<Entity> {
 
 	public EntityWriter(Entity entity) {
 		super(entity);
+		javaTypeToImports = new HashMap<String, String>();
+		javaTypeToImports.put("Date", "java.util.Date");
 	}
 
 	@Override
@@ -64,12 +66,7 @@ public class EntityWriter extends AbstractWriter<Entity> {
 		data.put("serializable", getWrapper().getSerializable());
 		data.put("sequenceName", getWrapper().getSequenceName());
 		data.put("classicImports", ENTITY_IMPORTS_TEMPLATE);
-		try {
-			data.put("fieldsImport",
-					this.getFieldsImports(getWrapper().getFields()));
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-		}
+		data.put("fieldsImport", this.getFieldsImports(getWrapper().getFields()));
 		data.put("activeRecorde", getWrapper().getActiveRecord());
 		data.put("activeRecordImports", ENTITY_IMPORTS_ACTIVE_RECORDE_TEMPLATE);
 		data.put("table", getWrapper().getTable());
@@ -90,20 +87,21 @@ public class EntityWriter extends AbstractWriter<Entity> {
 		return tags;
 	}
 
-	public List<String> getFieldsImports(List<Field> fields) throws Exception {
+	public List<String> getFieldsImports(List<Field> fields){
+		logger.debug("Begin custom field detection...");
 		ArrayList<String> imports = new ArrayList<String>();
 		for (Field field : fields) {
 			if (field.getType().contains(".")) {
 				logger.debug("Found some custom fields adding imports");
 				imports.add(field.getType());
-			} else {
-				if (javaTypeToImports.containsKey(field.getType())) {
-					imports.add(javaTypeToImports.get(field.getType()));
-				} else {
-					throw new Exception(
-							field.getType()
-									+ " : unknow type please specify the package in the xml file");
-				}
+				int currentIndex = getWrapper().getFields().indexOf(field);
+				String champs[] = field.getType().split("\\.");
+				Field newField = field;
+				newField.setType(champs[champs.length-1]);
+				logger.debug("New field type : "+newField.getType());
+				getWrapper().getFields().set(currentIndex, newField);
+			} else if (javaTypeToImports.containsKey(field.getType())) {
+				imports.add(javaTypeToImports.get(field.getType()));
 			}
 		}
 		return imports;
