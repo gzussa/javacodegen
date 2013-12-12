@@ -20,15 +20,15 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
-package org.gz.javacodegen;
+package org.gz.javacodegen.shell;
 
 import java.io.File;
 import java.util.Iterator;
 
-import org.gz.javacodegen.args.Parser;
 import org.gz.javacodegen.core.AbstractPlugin;
 import org.gz.javacodegen.core.logger.LogConfigurator;
 import org.gz.javacodegen.core.logger.LogHelper;
+import org.gz.javacodegen.shell.args.Parser;
 
 /**
  * Main class. This class delegate actions based on passed arguments

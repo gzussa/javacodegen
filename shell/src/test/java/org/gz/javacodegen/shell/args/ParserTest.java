@@ -20,12 +20,13 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
-package org.gz.javacodegen.args;
+package org.gz.javacodegen.shell.args;
 
 import junit.framework.TestCase;
 
 import org.gz.javacodegen.core.logger.LogConfigurator;
 import org.gz.javacodegen.core.logger.LogHelper;
+import org.gz.javacodegen.shell.args.Parser;
 import org.junit.Test;
 /**
  * Test Class for Parser
