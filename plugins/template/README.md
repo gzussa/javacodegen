@@ -68,9 +68,9 @@ org.gz.javacodegen.plugin.mygenerator.description=My awesome generator
 
 	- The first property is used by the javaCodeGen framework to locate you plugin entry point. 
 	- The second property is used to print the short description outputed by the following command:
-```
-java -jar javacodegen.jar -l
-```
+	```
+	java -jar javacodegen.jar -l
+	```
 
 5. Then you will need to update your pom.xml file. Go to `plugins/mygenerator/pom.xml` and change the `<artifactId>template</artifactId>` and `<name>template</name>` values to `<artifactId>mygenerator</artifactId>` and `<name>mygenerator</name>`
 
@@ -88,24 +88,24 @@ java -jar javacodegen.jar -l
 
 	- The **run(String inputFile, String output)** function will be called when you will execute the following commands:
 
-```
-java -jar javacodegen.jar output/ -p mygenerator inputfile.xml
-```
-and
-```
-java -jar javacodegen.jar output/ -p mygenerator inputfile1.xml inputfile1.xml
-```
+	```
+	java -jar javacodegen.jar output/ -p mygenerator inputfile.xml
+	```
+	and
+	```
+	java -jar javacodegen.jar output/ -p mygenerator inputfile1.xml inputfile1.xml
+	```
 
-This method is called one per input file passed as parameter.
+	This method is called one per input file passed as parameter.
 
 	- The **printUsage()** function will be called when you will execute the following command:
-```
-java -jar javacodegen.jar -h -p mygenerator
-```
+	```
+	java -jar javacodegen.jar -h -p mygenerator
+	```
 
-	- The **printVersion()** function will be called when you will execute the following command:
-```
-java -jar javacodegen.jar -v -p mygenerator
-```
+		- The **printVersion()** function will be called when you will execute the following command:
+	```
+	java -jar javacodegen.jar -v -p mygenerator
+	```
 
 9. Share your work!!
