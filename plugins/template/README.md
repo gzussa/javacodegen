@@ -10,11 +10,11 @@ This plugin is a base canvas that will help you create a plugin very easily.
 
 ## Get Started
 Here are all the step you need to do in order to create a new plugin:
-1. You need to do a copy of the **template** folders and past it in the **plugins** folder (next to other plugin folders). Change the folder name so it is named like your plugin. For example, let's say I want to create a plugin called **mygenerator**, I will rename the folder **mygenerator**
+- You need to do a copy of the **template** folders and past it in the **plugins** folder (next to other plugin folders). Change the folder name so it is named like your plugin. For example, let's say I want to create a plugin called **mygenerator**, I will rename the folder **mygenerator**
 
-2. Create a package for your plugin. In this example, my plugin is called **mygenerator** so I am going to create the package `org.gz.javacodegen.plugin.mygenerator` in folder `plugins/mygenerator/src/main/java`
+- Create a package for your plugin. In this example, my plugin is called **mygenerator** so I am going to create the package `org.gz.javacodegen.plugin.mygenerator` in folder `plugins/mygenerator/src/main/java`
 
-3. Copy the **TemplatePlugin.java** class into the `org.gz.javacodegen.plugin.mygenerator` package and rename the class **MyGeneratorPlugin.java**. At this point you should have something like:
+- Copy the **TemplatePlugin.java** class into the `org.gz.javacodegen.plugin.mygenerator` package and rename the class **MyGeneratorPlugin.java**. At this point you should have something like:
 ```java
  package org.gz.javacodegen.plugin.mygenerator;
  
@@ -54,7 +54,7 @@ Here are all the step you need to do in order to create a new plugin:
  }
 ```
 
-4. You need to rename and update the **template.properties** property file located in the `plugins/mygenerator/src/main/resources` folder. Rename the file **mygenerator.properties**.
+- You need to rename and update the **template.properties** property file located in the `plugins/mygenerator/src/main/resources` folder. Rename the file **mygenerator.properties**.
 Update properties from:
 ```
 org.gz.javacodegen.plugin.template.location=org.gz.javacodegen.plugin.template.TemplatePlugin
@@ -72,11 +72,11 @@ org.gz.javacodegen.plugin.mygenerator.description=My awesome generator
 	java -jar javacodegen.jar -l
 	```
 
-5. Then you will need to update your pom.xml file. Go to `plugins/mygenerator/pom.xml` and change the `<artifactId>template</artifactId>` and `<name>template</name>` values to `<artifactId>mygenerator</artifactId>` and `<name>mygenerator</name>`
+- Then you will need to update your pom.xml file. Go to `plugins/mygenerator/pom.xml` and change the `<artifactId>template</artifactId>` and `<name>template</name>` values to `<artifactId>mygenerator</artifactId>` and `<name>mygenerator</name>`
 
-6. Add your plugin as a module `<module>mygenerator</module>` to the `plugins/pom.xml` file.
+- Add your plugin as a module `<module>mygenerator</module>` to the `plugins/pom.xml` file.
 
-7. Add your plugin dependency to the `shell/pom.xml` file.
+- Add your plugin dependency to the `shell/pom.xml` file.
 ```xml
  <dependency>
 	<groupId>org.gz.javacodegen</groupId>
@@ -85,7 +85,7 @@ org.gz.javacodegen.plugin.mygenerator.description=My awesome generator
  </dependency>
 ```
 
-8. Your plugin is setup and you can start coding your logic and tests. Implement the 3 functions in `MyGeneratorPlugin.java`:
+- Your plugin is setup and you can start coding your logic and tests. Implement the 3 functions in `MyGeneratorPlugin.java`:
 
 	- The **run(String inputFile, String output)** function will be called when you will execute the following commands:
 
@@ -109,4 +109,4 @@ org.gz.javacodegen.plugin.mygenerator.description=My awesome generator
 	java -jar javacodegen.jar -v -p mygenerator
 	```
 
-9. Share your work!!
+- Share your work!!
