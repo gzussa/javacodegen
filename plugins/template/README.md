@@ -66,7 +66,7 @@ org.gz.javacodegen.plugin.mygenerator.location=org.gz.javacodegen.plugin.mygener
 org.gz.javacodegen.plugin.mygenerator.description=My awesome generator
 ```
 
-	- The first property is used by the javaCodeGen framework to locate you plugin entry point. 
+	- The first property is used by the javaCodeGen framework to locate your plugin entry point. 
 	- The second property is used to print the short description outputed by the following command:
 	```
 	java -jar javacodegen.jar -l
@@ -84,6 +84,7 @@ org.gz.javacodegen.plugin.mygenerator.description=My awesome generator
 	<version>0.0.1</version>			
  </dependency>
 ```
+
 8. Your plugin is setup and you can start coding your logic and tests. Implement the 3 functions in `MyGeneratorPlugin.java`:
 
 	- The **run(String inputFile, String output)** function will be called when you will execute the following commands:
@@ -103,7 +104,7 @@ org.gz.javacodegen.plugin.mygenerator.description=My awesome generator
 	java -jar javacodegen.jar -h -p mygenerator
 	```
 
-		- The **printVersion()** function will be called when you will execute the following command:
+	- The **printVersion()** function will be called when you will execute the following command:
 	```
 	java -jar javacodegen.jar -v -p mygenerator
 	```
