@@ -16,25 +16,25 @@ Here are all the step you need to do in order to create a new plugin:
 
 3. Copy the **TemplatePlugin** class into the `org.gz.javacodegen.plugin.mygenerator` package and rename the class **MyGeneratorPlugin**. At this point you should have something like:
 ```java
-package org.gz.javacodegen.plugin.mygenerator;
-
-import org.gz.javacodegen.core.AbstractPlugin;
-import org.gz.javacodegen.core.logger.LogConfigurator;
-import org.gz.javacodegen.core.logger.LogHelper;
-/**
- * Template plugin used as demo example on how to create a new plugin
- * @author gzussa
- *
- */
-public class MyGeneratorPlugin extends AbstractPlugin {
-	
-	static LogHelper logger = LogConfigurator.getLogger(TemplatePlugin.class.getName());
-
-	@Override
-	public void run(String inputFile, String output) {
-		logger.info("Plugin Execution:\n"
-				+ "Add your plugin logic here");
-		
+ package org.gz.javacodegen.plugin.mygenerator;
+ 
+ import org.gz.javacodegen.core.AbstractPlugin;
+ import org.gz.javacodegen.core.logger.LogConfigurator;
+ import org.gz.javacodegen.core.logger.LogHelper;
+ /**
+  * Template plugin used as demo example on how to create a new plugin
+  * @author gzussa
+  *
+  */
+ public class MyGeneratorPlugin extends AbstractPlugin { 
+ 	 
+	 static LogHelper logger = LogConfigurator.getLogger(TemplatePlugin.class.getName()); 
+ 
+ 	@Override
+ 	public void run(String inputFile, String output) {
+ 		logger.info("Plugin Execution:\n"
+ 				+ "Add your plugin logic here");
+ 		 
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class MyGeneratorPlugin extends AbstractPlugin {
 		
 	}
 
-}
+ }
 ```
 
 4. You need to rename and update the **template.properties** property file  ocated in the `plugins/mygenerator/src/main/resources` folder. Rename the file **mygenerator.properties**.
