@@ -3,26 +3,159 @@
 ## About
 ### What is it?
 
-**JavaCodeGen** is a **lightweigh**, **simple** and **hightly customizable** file generator framework written in Java for creating file generator tools. At this point, we are focusing on **code** generation but the framework can technically be used to generate any other sort of files. 
+**JavaCodeGen** is a **lightweight**, **easy** to use and **highly customizable** file generator framework written in Java for creating file generator tools. At this point, we are focusing on **code** generation tool but the framework can technically be used to generate any sort of files. 
 
-The framework helps developers and organizations to increase their productivity and code quality by creating code generation plugins that fit their needs. Plugins are already available and can be used out of the box if they fit your needs. Please read `README.md` files for each plugings to get more informations about their specificities. 
+The framework helps developers and organizations to increase their productivity and code quality by creating code generation tools that fit their needs. Generators are defined through plugins. Basically, a plugin represent one generator. A generator is the conbination of the JavaCodeGen framework plus one specific plugins. Plugins are already available and can be used out of the box if they fit your needs. Please read `README` files for each plugings to get more informations about their specificities. 
 
-This framework put together all the libraries you need in order to create code generators plugins that fit your needs. 
-The framework is splited in 3 parts.
-* The **Core** module contains all the low level apis and libraries needed to create your plugins. It gives a simple structure on how to create plugins. For more detail about how to create plugins please read the [Plugin Template README](#template)
-* The **Shell** module is the module used to catch and verify user entries when they execute the javacodegen tool. At this point the Shell module only give a specify set of actions. See the [Get Started](#getstarted) section to get more informations on how to use the JavaCodeGen tool
-* The **Plugin** folder contains all the modules that are currently available. The **Template** module is a plugin bootstrap module in order to help developers to create new plugins. Please read plugins README for more informations about each plugins. 
+This framework put together libraries, the structure and low level apis you need in order to create code generators plugins that fit your needs. 
+The framework is split in 3 parts.
+* The **Core** module contains all the low level apis needed to create and run a plugin. It gives you a simple structure that makes plugin creation very easy to do. For more detail about how to create plugins please read the [Template Plugin README](https://github.com/gzussa/javacodegen/tree/master/plugins/template) file.
+* The **Shell** module is the module used to catch and verify user entries when they execute the JavacCodeGen tool. At this point, the Shell module only gives a specific set of actions. See the [Get Started](#getstarted) section to get more informations on how to use the JavaCodeGen tool
+* The **Plugin** folder contains all the plugins that are currently available. The **Template** plugin can be used as a bootstrap or get starting bundle for developers who want to create new plugins. Please read plugins READMEs for more informations about each plugins. 
 
 More features will come soon. Please see the [Roadmap](#roadmap) section for more details.
 
 ### Dependencies
 
-Feel free to add dependencies to your module if needed. Regarding the JavaCodeGen framework itself, it only has 3 dependencies:
+Feel free to add dependencies to your module/plugin if needed. Regarding the JavaCodeGen framework itself, it only has 5 dependencies:
 * [Freemarker](http://freemarker.org/) used as the default and base templating engine
 * [Apache log4j](http://logging.apache.org/log4j/2.x/) used as the default and base logging mechanism
-* [Refletions](https://github.com/ronmamo/reflections) used as Java runtime metadata analysis (mainly use to fetch and read property files)
+* [Reflections](https://github.com/ronmamo/reflections) used as Java runtime metadata analysis (mainly use to fetch and read property files)
 * [Jaxb](https://jaxb.java.net/) used as Object Xml Mapper library
 * [Args4j](http://args4j.kohsuke.org/) used as Java command line arguments parser (used in the **Shell** module)
+
+## Get Started
+
+### How to Get JavaCodeGen?
+
+#### Build From Source
+
+Clone and Check out the sources from https://github.com/gzussa/javacodegen.git and then import the project into Eclipse as a Java Project. Then set up your project as a Maven project so you can fix dependencies.
+
+Make sure Maven is installed and run the following maven command to package and assemble your source code:
+
+```
+mvn package assembly:single
+```
+For more details on how to build and test the project please check the [Build](#build) section.
+
+#### Run JavaCodeGen
+
+The assembled jar file will be in the `shell/target` folder.
+
+Finally you can run the jar by doing:
+
+```
+java -jar shell-0.0.1-jar-with-dependencies.jar
+```
+Note that the above jar name may be up-to-date.
+
+#### Usages
+By running the last example, since we are not passing any arguments we should see an error message and usage examples in your console.
+
+```
+[ERROR]: OPTIONS:
+ VAL               : Base output
+ VAL               : Input file(s)
+ -h (--help)       : Display tool or plugin help
+ -l (--list)       : Display list of available plugins
+ -p (--plugin) VAL : Plugin to use
+ -v (--version)    : Display tool or plugin Version
+ -x (--debug)      : Run Command in debug mode. This option can be used in every
+                      usage possible
+[ERROR]: EXAMPLES:
+java -jar javacodegen.jar -h : Display Javacodegen help
+java -jar javacodegen.jar -h -p pluginname : Display plugin 'foo' help
+java -jar javacodegen.jar -l : Display list of available plugins
+java -jar javacodegen.jar -v : Display Javacodegen version
+java -jar javacodegen.jar -v -p pluginname : Display plugin 'foo' version
+java -jar javacodegen.jar outputfolder/ -p foo inputfile.xml : Run plugin 'foo' using inputfile.xml. outputfolder/ correspond to where the plugin is going to generate files
+java -jar javacodegen.jar outputfolder/ -p foo inputfile1.xml inputfile2.xml ... : Same as above but with multiple input files
+```
+Note that the above example may not be up-to-date also we renamed the packaged jar into `javacodegen.jar`
+
+##### Debug
+The `-x` option can be used everytime you want. If will display some debug informations that sometime can be very useful.
+
+##### plugin list
+At this point in time, we only have two plugins available, the template plugin and the springroojpa plugin.
+By executing the following command you will get the list of available plugins:
+```
+> java -jar javacodegen.jar -l
+
+Plugin list:
+template : Plugin used as creation canvas.
+springroojpa : Plugin that generate Spring Roo Like code.
+```
+##### Versions
+
+By execution the following command you will get the version of the JavaCodeGen framework
+
+```
+> java -jar javacodegen.jar -v
+
+AVACODEGEN Version 0.0.1
+```
+
+You can also get the version of a specific plugin (as named in the plugin list). For example, If we want to know what version of the **template** plugin, we just need to do the following:
+
+```
+> java -jar javacodegen.jar -v -p template
+
+Template Plugin:
+Version 1
+```
+
+##### Help
+You can also ask for help with the following command (output is currently the same as when we don't use any arguments):
+
+```
+> java -jar javacodegen.jar -h
+
+OPTIONS:
+ VAL               : Base output
+ VAL               : Input file(s)
+ -h (--help)       : Display tool or plugin help
+ -l (--list)       : Display list of available plugins
+ -p (--plugin) VAL : Plugin to use
+ -v (--version)    : Display tool or plugin Version
+ -x (--debug)      : Run Command in debug mode. This option can be used in every
+                      usage possible
+EXAMPLES:
+java -jar javacodegen.jar -h : Display Javacodegen help
+java -jar javacodegen.jar -h -p pluginname : Display plugin 'foo' help
+java -jar javacodegen.jar -l : Display list of available plugins
+java -jar javacodegen.jar -v : Display Javacodegen version
+java -jar javacodegen.jar -v -p pluginname : Display plugin 'foo' version
+java -jar javacodegen.jar outputfolder/ -p foo inputfile.xml : Run plugin 'foo' using inputfile.xml. outputfolder/ correspond to where the plugin is going to generate files
+java -jar javacodegen.jar outputfolder/ -p foo inputfile1.xml inputfile2.xml ... : Same as above but with multiple input files
+```
+We can also get help specific to a plugin in order to access plugin documentation by doing the following for the **template** plugin:
+
+```
+> java -jar javacodegen.jar -h -p template
+
+Template Plugin:
+This plugin is just a template
+```
+Note that template help is very small since this plugin doesn't do anything peticular.
+
+#### Plugins call
+
+As of now they are only two ways to interact with a plugins. More option may come in the futur. 
+```
+java -jar javacodegen.jar outputfolder/ -p foo inputfile.xml
+```
+
+and 
+
+```
+java -jar javacodegen.jar outputfolder/ -p foo inputfile1.xml inputfile2.xml ...
+```
+
+The `outputfoler/` represent the folders where generated files should be written on your disk
+The `foo` parameter represent the name of the plugin you want to use
+`xml` input files are input files for your plugins. Input file configuration is specific to each plugin. Please check plugin documentation to get more details on how to create input files.
 
 ## Get Involved
 ### Ways to Contribute
@@ -56,7 +189,7 @@ Note: It's important to note that Brick plugins will be compatible with a coming
 
 ### Pull Requests
 
-Pull requests are welcome.  For any significant change or new feature, please start a discussion or log an issue in the [Google Group](http://groups.google.com/group/javacodegen) first.  This will save you some time, in case your idea is deemed not general enough to be included in JavaCodeGen.
+Pull requests are welcome. For any significant change or new feature, please start a discussion or log an issue in the [Google Group](http://groups.google.com/group/javacodegen) first.  This will save you some time, in case your idea is deemed not general enough to be included in JavaCodeGen.
 
 Before submitting a pull request, please:
 
@@ -67,9 +200,9 @@ Before submitting a pull request, please:
 
 ### Maven
 
-JavaCodeGen uses [Maven](http://maven.apache.org) to verify each build.  If you are not familiar with Maven, check out the [getting started guide](http://maven.apache.org/guides/getting-started/index.html) for an introduction and installation instructions.
+JavaCodeGen uses [Maven](http://maven.apache.org) to verify each build. If you are not familiar with Maven, check out the [getting started guide](http://maven.apache.org/guides/getting-started/index.html) for an introduction and installation instructions.
 
-Before submitting a pull request, please run the Maven tasks.  To do so:
+Before submitting a pull request, please run Maven tasks to make sure the project compile and your changes didn't introduce regressions. To do so:
 
 First, make sure you can compile without error. 
 
@@ -83,7 +216,7 @@ Then compile and run tests
 mvn test
 ```
 
-Make sur you can generate the assembled jar file
+Make sure you can generate the assembled jar file
 
 ```
 mvn package assembly:single
@@ -92,6 +225,12 @@ mvn package assembly:single
 The assembled jar file will be in the `shell/target` folder.
 
 Finally test your jar file
+
+### Build for specific plugins only
+
+You don't need to package the entire source code with every plugins if you are only using few of them.
+You can remove any plugins you want. Just remove plugin folders you don't need. Also you will need to fix Maven dependencies.
+Remove corresponding dependencies in the `shell/pom.xml` file and module definitions in the `plugins/pom.xml` file.
 
 ### Continuous Integration
 

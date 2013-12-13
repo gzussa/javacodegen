@@ -7,24 +7,24 @@
 		<version>0.0.1</version>
 	</parent>
 
-	<artifactId>javacodegen-shell</artifactId>
-	<name>javacodegen-shell</name>
+	<artifactId>shell</artifactId>
+	<name>shell</name>
 	<packaging>jar</packaging>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.gz.javacodegen</groupId>
-			<artifactId>javacodegen-core</artifactId>
+			<artifactId>core</artifactId>
 			<version>0.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.gz.javacodegen</groupId>
-			<artifactId>javacodegen-plugin-springroojpa</artifactId>
-			<version>0.0.1</version>
+			<artifactId>springroojpa</artifactId>
+			<version>0.0.1</version>			
 		</dependency>
 		<dependency>
 			<groupId>org.gz.javacodegen</groupId>
-			<artifactId>javacodegen-plugin-template</artifactId>
+			<artifactId>template</artifactId>
 			<version>0.0.1</version>			
 		</dependency>
 		<dependency>

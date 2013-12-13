@@ -6,8 +6,8 @@
 		<artifactId>javacodegen</artifactId>
 		<version>0.0.1</version>
 	</parent>
-	<artifactId>javacodegen-core</artifactId>
-	<name>javacodegen-core</name>
+	<artifactId>core</artifactId>
+	<name>core</name>
 	<packaging>jar</packaging>
 
 	<dependencies>
@@ -16,11 +16,11 @@
 			<artifactId>reflections</artifactId>
 			<version>0.9.9-RC1</version>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.google.code.google-collections</groupId>
 			<artifactId>google-collect</artifactId>
 			<version>snapshot-20071022</version>
-		</dependency>
+		</dependency> -->
 	</dependencies>
 
 </project>

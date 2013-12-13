@@ -3,18 +3,18 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.gz.javacodegen</groupId>
-		<artifactId>javacodegen</artifactId>
+		<artifactId>plugins</artifactId>
 		<version>0.0.1</version>
 	</parent>
 
-	<artifactId>javacodegen-plugin-springroojpa</artifactId>
-	<name>javacodegen-plugin-springroojpa</name>
+	<artifactId>springroojpa</artifactId>
+	<name>springroojpa</name>
 	<packaging>jar</packaging>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.gz.javacodegen</groupId>
-			<artifactId>javacodegen-core</artifactId>
+			<artifactId>core</artifactId>
 			<version>0.0.1</version>
 		</dependency>
 	</dependencies>

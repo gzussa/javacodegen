@@ -8,10 +8,9 @@
 	<name>javacodegen</name>
 
 	<modules>
-		<module>javacodegen-core</module>
-		<module>javacodegen-plugin-springroojpa</module>
-		<module>javacodegen-plugin-template</module>
-		<module>javacodegen-shell</module>
+		<module>core</module>
+		<module>plugins</module>
+		<module>shell</module>
 	</modules>
 
 	<properties>
@@ -27,7 +26,7 @@
 					<configuration>
 						<archive>
 							<manifest>
-								<mainClass>org.gz.javacodegen.JavaCodeGen</mainClass>
+								<mainClass>org.gz.javacodegen.shell.JavaCodeGen</mainClass>
 							</manifest>
 						</archive>
 						<descriptorRefs>
@@ -79,6 +78,11 @@
 			<groupId>org.reflections</groupId>
 			<artifactId>reflections</artifactId>
 			<version>0.9.9-RC1</version>
+		</dependency>
+		<dependency>
+			<groupId>args4j</groupId>
+			<artifactId>args4j</artifactId>
+			<version>2.0.8</version>
 		</dependency>
 	</dependencies>
 </project>
