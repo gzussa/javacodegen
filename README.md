@@ -1,5 +1,7 @@
 # JavaCodeGen
 
+[![Build Status](https://travis-ci.org/gzussa/javacodegen.png?branch=master)](https://travis-ci.org/gzussa/javacodegen)
+
 ## About
 ### What is it?
 
@@ -235,8 +237,6 @@ You can remove any plugins you want. Just remove plugin folders you don't need. 
 Remove corresponding dependencies in the `shell/pom.xml` file and module definitions in the `plugins/pom.xml` file.
 
 ### Continuous Integration
-
-[![Build Status](https://travis-ci.org/gzussa/javacodegen.png?branch=master)](https://travis-ci.org/gzussa/javacodegen)
 
 #### Travis-CI
 The Maven build is run automatically using [Travis-CI](travis-ci.org) upon every pull request and push to master.  But if any errors are found, you'll need to fix them and re-submit your pull request.  So please run the grunt task locally to save time.
