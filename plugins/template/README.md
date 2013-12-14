@@ -67,7 +67,7 @@ org.gz.javacodegen.plugin.mygenerator.description=My awesome generator
 ```
 
 	- The first property is used by the javaCodeGen framework to locate your plugin entry point. 
-	- The second property is used to print the short description outputed by the following command:
+	- The second property is used to print the short description displayed by the following command:
 	```
 	java -jar javacodegen.jar -l
 	```

@@ -5,12 +5,12 @@
 
 **JavaCodeGen** is a **lightweight**, **easy** to use and **highly customizable** file generator framework written in Java for creating file generator tools. At this point, we are focusing on **code** generation tool but the framework can technically be used to generate any sort of files. 
 
-The framework helps developers and organizations to increase their productivity and code quality by creating code generation tools that fit their needs. Generators are defined through plugins. Basically, a plugin represents one generator. A generator is the combination of the JavaCodeGen framework plus one specific plugins. Plugins are already available and can be used out of the box if they fit your needs. Please read `README` files for each plugings to get more informations about their specificities. 
+The framework helps developers and organizations to increase their productivity and code quality by creating code generation tools that fit their needs. Generators are defined through plugins. Basically, a plugin represents one generator. A generator is the combination of the JavaCodeGen framework plus one specific plugins. Plugins are already available and can be used out of the box if they fit your needs. Please read `README` files for each plugins to get more informations about their specificities. 
 
 This framework put together libraries, the structure and low level apis you need in order to create code generators plugins that fit your needs. 
 The framework is split in 3 parts.
 * The **Core** module contains all the low level apis needed to create and run a plugin. It gives you a simple structure that makes plugin creation very easy to do. For more detail about how to create plugins please read the [Template Plugin README](https://github.com/gzussa/javacodegen/tree/master/plugins/template) file.
-* The **Shell** module is the module used to catch and verify user entries when they execute the JavacCodeGen tool. At this point, the Shell module only gives a specific set of actions. See the [Get Started](#get-started) section to get more informations on how to use the JavaCodeGen tool
+* The **Shell** module is the module used to catch and verify user entries when they execute the JavaCodeGen tool. At this point, the Shell module only gives a specific set of actions. See the [Get Started](#get-started) section to get more informations on how to use the JavaCodeGen tool
 * The **Plugin** folder contains all the plugins that are currently available. The **Template** plugin can be used as a bootstrap or get starting bundle for developers who want to create new plugins. Please read plugins READMEs for more informations about each plugins. 
 
 More features will come soon. Please see the [Roadmap](#roadmap) section for more details.
@@ -18,7 +18,7 @@ More features will come soon. Please see the [Roadmap](#roadmap) section for mor
 ### Dependencies
 
 Feel free to add dependencies to your module/plugin if needed. Regarding the JavaCodeGen framework itself, it only has 5 dependencies:
-* [Freemarker](http://freemarker.org/) used as the default and base templating engine
+* [Freemarker](http://freemarker.org/) used as the default template engine
 * [Apache log4j](http://logging.apache.org/log4j/2.x/) used as the default and base logging mechanism
 * [Reflections](https://github.com/ronmamo/reflections) used as Java runtime metadata analysis (mainly use to fetch and read property files)
 * [Jaxb](https://jaxb.java.net/) used as Object Xml Mapper library
@@ -77,7 +77,7 @@ java -jar javacodegen.jar outputfolder/ -p foo inputfile1.xml inputfile2.xml ...
 Note that the above example may not be up-to-date. Also, we renamed the packaged jar into `javacodegen.jar`
 
 ##### Debug
-The `-x` option can be used everytime you want. If will display some debug informations that sometime can be very useful.
+The `-x` option can be used every time you want. If will display some debug informations that sometime can be very useful.
 
 ##### Plugin list
 At this point in time, we only have two plugins available, the **template** plugin and the **springroojpa** plugin.
@@ -132,7 +132,7 @@ java -jar javacodegen.jar -v -p pluginname : Display plugin 'foo' version
 java -jar javacodegen.jar outputfolder/ -p foo inputfile.xml : Run plugin 'foo' using inputfile.xml. outputfolder/ correspond to where the plugin is going to generate files
 java -jar javacodegen.jar outputfolder/ -p foo inputfile1.xml inputfile2.xml ... : Same as above but with multiple input files
 ```
-We can also get help specific to a plugin in order to access plugin documentation by doing the following for the **template** plugin:
+We can also get plugin help only in order to access plugin documentation. See example below with the **template** plugin:
 
 ```
 > java -jar javacodegen.jar -h -p template
@@ -140,11 +140,11 @@ We can also get help specific to a plugin in order to access plugin documentatio
 Template Plugin:
 This plugin is just a template
 ```
-Note that template help is very small since this plugin doesn't do anything peticular.
+Note that template help is very small since this plugin doesn't do anything particular.
 
 ##### Plugin execution
 
-As of now, they are only two ways to interact with a plugin. More options will come in the futur. 
+As of now, they are only two ways to interact with a plugin. More options will come in the future. 
 ```
 java -jar javacodegen.jar outputfolder/ -p foo inputfile.xml
 ```
@@ -175,17 +175,17 @@ Here is a list of things that would need to be done regarding the framework and 
 
 #### Framework
 
-- Create a module in order to fetch database schema from any database and inegrate with other modules such a way that schemas can be leveraged by multiples modules. We don't want multiple modules to create this features since it can be common.
-- Share ideas and enhance the Shell module so we can increase the number of options available for wider ussage of the framework.
-- Integrate JSON and CSV files input. We currently support XMl input but we don't support JSON nor CSV files. Basically we need to add required library and create some utility classes.
-- Add Javadoc and documentations
-- Help Increase test coverage.
+- Create a module in order to fetch database schema from any database and integrate with other plugins such a way that schemas can be leveraged by multiple plugins. We don't want multiple plugins to create this features since it can be common.
+- Share ideas and enhance the **shell** module so we can increase the number of options available for wider usage of the framework.
+- Integrate JSON and CSV files input. We currently support XML inputs but we don't support JSON nor CSV files. Basically we need to add required library and create some utility classes.
+- Add Javadoc and documentations.
+- Help increase test coverage.
 
 #### Plugins
 - The SpringRooJpa plugin needs some enhancements like use JSON configuration and reverse database using enhancements cited above.
 - Create a SpringRooJdo plugins. Same as SpringRooJpa except that it use the JDO standard.
-- Create the Brick-Spring-Roo. Same as the SpringRooJpa and SpringRooJdo plugins with significant changes coming from entreprise best practices.
-- Create the Brick-GoogleCloud. Google cloud code generator using low level datastore persistence api instead of Java standard and incorporating entreprises best practices as well.
+- Create the Brick-Spring-Roo. Same as the SpringRooJpa and SpringRooJdo plugins with significant changes coming from enterprise best practices.
+- Create the Brick-GoogleCloud. Google cloud code generator using low level datastore persistence api instead of Java standard and incorporating enterprises best practices as well.
 Note: It's important to note that Brick plugins will be compatible with a coming soon lightweight Scaffolding UI called Briquette
 
 
@@ -245,7 +245,7 @@ Any feedback/question/request please visit the [discussion group](http://groups.
 
 If you are using the JavaCodeGen Framework and/or plugins, I would greatly appreciate it if you can send me a link to your project so I can get an idea on how it is being used and what kind of features/changes would be good to have in the future.
 
-##Licence
+##License
 
 The MIT License (MIT)
 
